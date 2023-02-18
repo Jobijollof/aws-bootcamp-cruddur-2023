@@ -351,6 +351,7 @@ Default output format: json
 These questions have to be answered correctly to configure Aws CLI correctly. After this, i ran 
 
 `aws sts-get-caller-identity`
+
 This command basically identifies the user.
 
 🤭 0oops watched more of this [tutorial](https://youtu.be/OdUnNuKylHg)) and this was the wrong thing to do.
@@ -364,11 +365,22 @@ to export  my credentials. To export credentials i ran:
 `export AWS_SECRET_ACCESS_KEY=" access key"`
 `export AWS_DEFAULT_REGION= "region"`
 
+Copied and pasted the commands into my gitpod terminal one at a time.
+
+Confirmed if i set it right by typing `env | grep AWS_`  The outtput for this was my details  
+
+Typed `aws sts get-caller-identity` and my User Id, Acoount and Arn was the output
+
+Told gitpod to remember these credentials next time i open your workspace. by typing the following commands.
+`gp env AWS_ACCESS_KEY_ID=""`
+`gp env AWS_SECRET_ACCESS_KEY=""`
+`gp env AWS_DEFAULT_REGION=us-east-1`
+
 Checked variables on my gitpod profile to make sure my credentials were properly exported. 
 ![variable](./images/env-variables.png)
 
 I tried to push to main and had permission issues.I had not authorised gitpod to push to github
-I logged into [here]https://gitpod.io/access-control/ and granted gitpod the required permission
+I logged into [here]https://gitpod.io/access-control/ and granted gitpod the required permission.
 
 
 
