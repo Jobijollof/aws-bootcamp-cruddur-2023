@@ -50,12 +50,6 @@ It is a disposable micro-blogging platform.
 - Create [Rollbar account](https://www.youtube.com/watch?v=Lpm6oAP3Fb0&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=11)
 
 
-### What are we building:
-
-An  app called Cruddur.
-
-A replica of twitter.  It differs from twitter in the sense that it is a disposable micro-blogging platform.
-
 ### Tools for building:
 
 1. SQL and No SQL databases
