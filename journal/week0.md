@@ -83,7 +83,7 @@ I know it's a start-up called Cruddur a microblogging site. Ooops forgot to intr
 
 - Investors and Board of directors(They buy into the idea of the founder)
 
-- Fractional CTO- Someone partly committed to the company (They split their time between the startup and consulting in this case Andrew brown? smiley)
+- Fractional CTO- Someone partly committed to the company (They split their time between the startup and consulting in this case Andrew brown? 😀
 
 - Marketing team: (This is the team  that will generate content)
 
