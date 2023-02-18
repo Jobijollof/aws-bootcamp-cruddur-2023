@@ -216,7 +216,7 @@ Logical Design- This is like the blueprint in which we are going to stand things
 
 - Defines how the system should be implemented
 
-- Enviroment without actual names or sizes
+- Environment without actual names or sizes
 
 - Example:undeployed CFT 
 
@@ -239,9 +239,9 @@ ask questions like:
 
 - How is it going to make money?
 
-- What kind of skillsets do we have available internally or are we going to outsource
+- What kind of skill sets do we have available internally or are we going to outsource
 
-- How are we going to acheive this given the skillset available and the time frame provided.
+- How are we going to achieve this given the skill set available and the time frame provided.
 
 Play be the packet when you play be the packet, you can see what you are building from your customers eyes, from the moment they decide to click on the url of the app. Questions like do they get to be authenticated first and every other scenarios will come to play. This just basically seeing the app from the users eyes.  
 
@@ -249,7 +249,7 @@ Play be the packet when you play be the packet, you can see what you are buildin
 
 ### TOGAF: What is TOGAF
 
-"This is an architecture framework that provides the methods and tools for assisting in the acceptnce,
+"This is an architecture framework that provides the methods and tools for assisting in the acceptance,
 production,use and maintenance of an enterprise architecture. It is based on an iterative  process model supported by best practices
 and a re-useable set of existing architecture assets" It is acronym for Open Group Architecture Framework, is intended to to a standard way to design and implement 
 architectures for very large computer systems.
@@ -269,9 +269,12 @@ Closely related to TOGAF IS C4 model,which stands for connection,collaboration,c
 This is a tool provided by AWS. It gives you a compilation of questions that you can ask your team, investors etc. These questions are 
 being asked from the 6 pillars of well architected framework which are 
 - Operational excellence
+
 - Security
-- Relability
-- Performance efficiency- How well is your system performing. How do you pick the best performimg architecture(are picking between Ec2 or going serverless)
+
+- Reliability
+
+- Performance efficiency- How well is your system performing. How do you pick the best performing architecture(are picking between Ec2 or going serverless)
 
 - Cost optimization - How do get the most value for money
 
@@ -287,7 +290,7 @@ To sort out the error, i logged in as root user on the drop down by my username 
 
 `account`
 
-i scrolled down to `IAM User Role and Role Access to billing information` on the top right corner  i clicked on edit
+i scrolled down to `IAM User Role Access to billing information` on the top right corner  i clicked on edit
 ![edit](./images/activate-Iam-user.png) 
 
 I checked the box to `activate access to the billing and cost management console pages`
@@ -297,11 +300,22 @@ I updated.
 
 Pricing varies according to region
 
-I set up billing alarm with this [tutorial](https://youtu.be/OVw3RrlP-sI)
+I set up billing alert with this [tutorial](https://youtu.be/OVw3RrlP-sI)
+
+To set billing alert go to the billing dashboard click on
+
+`billing preferences`
+
+![billing](./images/billing%20prefrence.png)
+
+Fill out all the parameters and `save`
+
+![save](./images/billin-alert.png)
+
 
 ### Security:
 
-The CISO chief information security officer resonsible for an organiizations information and data security. 
+The CISO chief information security officer responsible for an organization's information and data security. 
 I enabled MFA for the root user
 I also enabled MFA for IAM user using google authenticator.
 I Enabled Cloudtrail for auditing most API calls
@@ -362,24 +376,28 @@ To delete the configuration, i  had to run `nano ~/.aws/config` and `nano ~/.aws
 to export  my credentials. To export credentials i ran:
 
 `export AWS_ACCESS_KEY_ID="your access id"`
+
 `export AWS_SECRET_ACCESS_KEY=" access key"`
+
 `export AWS_DEFAULT_REGION= "region"`
 
 Copied and pasted the commands into my gitpod terminal one at a time.
 
-Confirmed if i set it right by typing `env | grep AWS_`  The outtput for this was my details  
+Confirmed if i set it right by typing `env | grep AWS_`  The output for this was my details  
 
-Typed `aws sts get-caller-identity` and my User Id, Acoount and Arn was the output
+Typed `aws sts get-caller-identity` and my User Id, Account and Arn was the output
 
 Told gitpod to remember these credentials next time i open your workspace. by typing the following commands.
 `gp env AWS_ACCESS_KEY_ID=""`
+
 `gp env AWS_SECRET_ACCESS_KEY=""`
+
 `gp env AWS_DEFAULT_REGION=us-east-1`
 
 Checked variables on my gitpod profile to make sure my credentials were properly exported. 
 ![variable](./images/env-variables.png)
 
-I tried to push to main and had permission issues.I had not authorised gitpod to push to github
+I tried to push to main and had permission issues.I had not authorized gitpod to push to github
 I logged into [here]https://gitpod.io/access-control/ and granted gitpod the required permission.
 
 
