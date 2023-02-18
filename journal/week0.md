@@ -77,15 +77,15 @@ I know it's a start-up called Cruddur a microblogging site. Ooops forgot to intr
 
 ### Teams involved :
 
-HR - Interviewer
+- HR - Interviewer
 
-Founder
+- Founder
 
-Investors and Board of directors(They buy into the idea of the founder)
+- Investors and Board of directors(They buy into the idea of the founder)
 
-Fractional CTO- Someone partly committed to the company (They split their time between the startup and consulting in this case Andrew brown? smiley)
+- Fractional CTO- Someone partly committed to the company (They split their time between the startup and consulting in this case Andrew brown? smiley)
 
-Marketing team: (This is the team  that will generate content)
+- Marketing team: (This is the team  that will generate content)
 
 ### Cruddur Users:
 
