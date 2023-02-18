@@ -89,7 +89,7 @@ I know it's a start-up called Cruddur a microblogging site. Ooops forgot to intr
 
 ### Cruddur Users:
 
-The team is yet to decide whether it going to be used by university students, or young professionals or to expand to other user types.
+The team is yet to decide whether the app is going to be used by university students, or young professionals or to expand to other user types.
 (This creates the issue of age authentication and generating age-appropriate content)
 Short-lived content has to be engaging and exciting so that people keep coming back to the app.
 Cruddur is an ephemeral micro-blogging platform. We have to build an app that creates a sense of community and trust in users
