@@ -311,8 +311,7 @@ Fill out all the parameters and `save`
 
 The CISO chief information security officer responsible for an organization's information and data security. 
 I enabled MFA for the root user
-I also enabled MFA for IAM user using google authenticator.
-I Enabled Cloudtrail for auditing most API calls
+I also enabled MFA for IAM user using google authenticator
 There are three types of users IAM User, Human user, System user 
 IAM user is a global service
 IAM Roles- I AM roles manage who has permission to resources on AWS
@@ -329,7 +328,6 @@ I Created thresholds for the budgets I created at 50%, 85%, and 100% of the actu
 
 Used cloud shell to generate credentials
 ![cloudshell](./images/new-cloud.png)
-
 
 
 ### Install AWS CLI:
@@ -375,6 +373,7 @@ to export  my credentials. To export credentials i ran:
 
 `export AWS_DEFAULT_REGION= "region"`
 
+
 Copied and pasted the commands into my gitpod terminal one at a time.
 
 Confirmed if i set it right by typing `env | grep AWS_`  The output for this was my details  
@@ -390,6 +389,8 @@ Told gitpod to remember these credentials next time i open your workspace. by ty
 
 Checked variables on my gitpod profile to make sure my credentials were properly exported. 
 ![variable](./images/env-variables.png)
+
+Saving variables om gitpod will ensure that they are safe and loaded everytime
 
 I tried to push to main and had permission issues.I had not authorized gitpod to push to github
 I logged into [here]https://gitpod.io/access-control/ and granted gitpod the required permission.
