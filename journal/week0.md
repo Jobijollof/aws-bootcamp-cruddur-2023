@@ -328,7 +328,7 @@ I Created thresholds for the budgets I created at 50%, 85%, and 100% of the actu
 ### Cloudshell:
 
 Used cloud shell to generate credentials
-![cloudshell](./images/cloudshell.png)
+![cloudshell](./images/new-cloud.png)
 
 
 
