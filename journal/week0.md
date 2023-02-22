@@ -201,7 +201,9 @@ Conceptual Design
 
 - napkin design
 
-![napkin](./images/napkin%20design.png)
+![napkin](./images/napkin%20design.png) [Link](https://lucid.app/lucidchart/bf42d74a-8a96-4f59-9752-273780e66bb4/edit?viewport_loc=-753%2C-853%2C2613%2C1120%2C0_0&invitationId=inv_46d2b27e-a76b-46e0-91f5-2555f1c454d9)
+
+
 
 This is the lowest level of design. It involves no technicalities. 
 
@@ -309,20 +311,31 @@ Fill out all the parameters and `save`
 
 ### Security:
 
-The CISO chief information security officer responsible for an organization's information and data security. 
+The CISO chief information security officer responsible for an organization's information and data security.
+
 I enabled MFA for the root user
+
+![mfa](./images/MFA.png)
+
 I also enabled MFA for IAM user using google authenticator
+
 There are three types of users IAM User, Human user, System user 
+
 IAM user is a global service
+
 IAM Roles- I AM roles manage who has permission to resources on AWS
+
 IAM policies - Controls their permission 
 
 ### Budgets:
 Two budgets are free for the free tier.
-I created a credit budget and a zero-spend budget. The zero spend is actually a $1 budget. It notifies you when your spend
-exceeds $0.01. 
+
+I created a credit budget and a zero-spend budget. The zero spend is actually a $1 budget. It notifies you when your spend exceeds $0.01. 
+
 I Created thresholds for the budgets I created at 50%, 85%, and 100% of the actual budget.
+
 ![budget](./images/Budget.png)
+
 
 ### Cloudshell:
 
@@ -365,7 +378,6 @@ This command basically identifies the user.
 To delete the configuration, i  had to run `nano ~/.aws/config` and `nano ~/.aws/credentials`.
 
 💃Yeepppee back in business. According to this [video](https://youtu.be/OdUnNuKylHg) i am meant
-to export  my credentials. To export credentials i ran:
 
 `export AWS_ACCESS_KEY_ID="your access id"`
 
@@ -394,6 +406,90 @@ Saving variables om gitpod will ensure that they are safe and loaded everytime
 
 I tried to push to main and had permission issues.I had not authorized gitpod to push to github
 I logged into [here]https://gitpod.io/access-control/ and granted gitpod the required permission.
+
+
+### Create an SNS topic through the CLI:
+
+Created an SNS Topic with  the following command
+
+`aws sns create-topic --name billing-alarm`
+
+The output is the ARN assigned to the created topic
+
+![sns](./images/SnS-TOpic1alarm.png)
+
+I copied and pasted this code one after the other because pasting all the code once kept giving me an error.  Substitute with the necessary credentials.
+
+```
+aws sns subscribe \
+--topic-arn="" \
+--protocol=email \
+--notification-endpoint=your@email.com
+
+```
+![topic](./images/sns-topic2.png)
+
+### Create a billing Alarm (Cloudwatch)
+
+[watch](https://aws.amazon.com/premiumsupport/knowledge-center/cloudwatch-estimatedcharges-alarm/)
+
+I already have cloudwatch on my account, however i still did the task and committed the json code to the repo. So here goes
+
+![account](./images/cloudwatch-bilingalarm.png) (my old billing alarm)
+
+- create an alarm configuration as a json file
+
+Call the PutMetricAlarm API: `aws cloudwatch put-metric-alarm --cli-input-json file://alarm_config.json`
+
+![json](./images/sns-ui.png)
+
+I went to my management console to confirm the creation of my alarm. The alarm was created but i did not receive a confirmation email.
+
+### Creating a budget using the AWS CLI
+
+To create a budget on the [CLI](https://docs.aws.amazon.com/cli/latest/reference/budgets/create-budget.html) 
+
+Two .json files were created 2 json  "budget.json" and "notifications-with-subscribers.json"
+
+I copied and pasted the necessary json code
+
+I read through it and made the necessary changes to set my budget limit and threshold.
+
+I copied the command below to make the necessary changes to folder and account ID:
+
+```
+aws budgets create-budget
+--account-id 111122223333
+--budget file://budget.json
+--notifications-with-subscribers file://notifications-with-subscribers.json
+
+```
+
+To get my account ID, i typed `aws sts get-caller-identity --query Account` 
+
+### To save my account Id as an environment variable:  
+
+I ran the  following code `export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)`. Now when i type `env | grep AWS_ACCOUNT_`  i get an output of  my account ID to the terminal.
+
+To save the account ID permanently so i can call it whenever i need it i ran  `gp env AWS_ACCOUNT_ID=""`
+
+Back to the budget. To set up the budge i ran this pasting the code one after the other
+
+![code](./images/cli-budgetback.png)
+
+There was no output(which is usually a good indicator that it worked)
+
+I went to my management console and checked the budget page and my created budget was there.
+
+![budget](./images/new-budgetUi.png)
+
+
+
+
+
+
+
+
 
 
 
