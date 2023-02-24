@@ -11,6 +11,8 @@ any cost.
 
 Go to my avatar on Gitpod to check billing to confirm how much credit I have.
 
+### Week 1 Spending Consideratios:
+
 
 ### What is docker?
 
@@ -85,13 +87,13 @@ cd ..
 ```
 Paste code one after the other on the terminal.
 
-- I unlocked the port tab on my terminal (you would see a tiny padlock,click on it to open it)
+- Unlock the port tab on the terminal (you would see a tiny padlock,click on it to open it)
 
-- I opened the link associated with 4567 in my browser
+- Open the link associated with  port 4567 
 
-- added the following to the url to `/api/activities/home`
+- Add the following to the url to `/api/activities/home`
 
-- I got a series of code
+- Output is a  of Json code
 
 
 ### Unset Environment variables
@@ -120,7 +122,7 @@ docker build -t  backend-flask:latest ./backend-flask
 `docker container run --rm -p 4567:4567 -d backend-flask`
 
 Here, i was pretty confused. I ran the above command and asumed i had an error copying the command cause in my head why will container be in the ommand. SO, i ran the command again, this time i removed the container: `docker run --rm -p 4567:4567 -d backend-flask`  erorr: Bind for 0.0.0.0 faile:port is already allocated. 
-I googled the error and on stack overflow, i saw that i had to do the following:
+I googled the error on stack overflow, and i saw that i had to do the following:
 
 `docker container ls` This should list the container ID.
 
@@ -138,7 +140,7 @@ I googled the error and on stack overflow, i saw that i had to do the following:
 
 ## Containerize Frontend
 
-###Run NPM Install
+### Run NPM Install
 
 We have to run NPM Install before building the container since it needs to copy the contents of node_modules
 
@@ -177,7 +179,7 @@ CMD ["npm", "start"]
 
 ### Create a docker-compose file
 
-- Create `docker-compose.yml` at the root of your project.
+### Create `docker-compose.yml` at the root of your project.
 
 ```
 version: "3.8"
@@ -209,6 +211,7 @@ networks:
 
 ```
 
+- Right click on `docker-compose.yml` and click `compose up`
 
 
 
