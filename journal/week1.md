@@ -54,6 +54,8 @@ Alternatives to Docker:
 
 ### Create a file here: `backend-flask/Dockerfile`
 
+- Paste this code into the file
+
 ```
 
 FROM python:3.10-slim-buster
@@ -105,7 +107,7 @@ alternatively)
 
 ### Build Container
 
-The docker build command builds Docker images from a Dockerfile and a “context”. A build's context is the set of files located in the specified PATH or URL . The build process can refer to any of the files in the context. For example, your build can use a COPY instruction to reference a file in the context.
+The docker build command builds Docker images from a Dockerfile and a “context”. A build's context is the set of files located in the specified PATH or URL . The build process can refer to any of the files in the context. For example, your build /api/activities/homecan use a COPY instruction to reference a file in the context.
 
 ```
 docker build -t  backend-flask ./backend-flask
@@ -124,7 +126,6 @@ I googled the error and on stack overflow, i saw that i had to do the following:
 
 `docker stop <container ID>`
 
-I noticed my terminal output was different for Andrews in the tutorial. SO i clicked on Logs on docker and I got my logs. So everything works perfectly now.
 
 ### Set Environment Variables
 
