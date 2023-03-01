@@ -121,8 +121,14 @@ docker build -t  backend-flask:latest ./backend-flask
 
 `docker container run --rm -p 4567:4567 -d backend-flask`
 
-Here, i was pretty confused. I ran the above command and asumed i had an error copying the command cause in my head why will container be in the ommand. SO, i ran the command again, this time i removed the container: `docker run --rm -p 4567:4567 -d backend-flask`  erorr: Bind for 0.0.0.0 faile:port is already allocated. 
-I googled the error on stack overflow, and i saw that i had to do the following:
+SO a little story time. At this point i had started to feel like a docker Captain. Everything was working as expected without any errors. So, instead of running `docker container run --rm -p 4567:4567 -d backend-flask`, i ran `docker run --rm -p 4567:4567 -d backend-flask` because in my head why will the command include `container` 🤣 the errors came upon me like an earthquake.  I decided to do the right thing by copying and pasting the right command then i got an error: Bind for 0.0.0.0 failed:port is already allocated.😔 All i could have done was follow instructions. Anyways, i googled the error on stack overflow, and i saw that i had to do the following:
+
+`docker container ls` This should list the container ID.
+
+`docker stop <container ID>`
+
+Advice from stack overflow worked 💃😮‍💨. The next step was to set environment variables.
+
 
 `docker container ls` This should list the container ID.
 
