@@ -226,7 +226,9 @@ I had followed all the instructions to build frontend and backend, i ran `docker
 
 
 
-## Api/Create a notification feature, Backend/Frontend:
+## Api/Create a Notification Feature, Backend/Frontend:
+
+[Notification-feature](https://www.youtube.com/watch?v=OjZz4D0B-cA&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=25)
 
 Open `openapi.yml file` and add the following.
 
