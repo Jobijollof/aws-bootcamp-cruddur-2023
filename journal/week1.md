@@ -13,6 +13,8 @@ Go to my avatar on Gitpod to check billing to confirm how much credit I have.
 
 ### Week 1 Spending Consideratios:
 
+https://youtu.be/OAMHu1NiYoI
+
 
 ### What is docker?
 
