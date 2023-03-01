@@ -466,7 +466,23 @@ aws dynamodb create-table \
 
 
 ```
+
 ![create-table](https://user-images.githubusercontent.com/113374279/222150420-37620d4e-3270-4381-89a1-83de4f1ed9a8.png)
+
+### Create an item:
+
+```
+
+aws dynamodb put-item \
+    --endpoint-url http://localhost:8000 \
+    --table-name Music \
+    --item \
+        '{"Artist": {"S": "No One You Know"}, "SongTitle": {"S": "Call Me Today"}, "AlbumTitle": {"S": "Somewhat Famous"}}' \
+    --return-consumed-capacity TOTAL  
+
+```
+![create-item](https://user-images.githubusercontent.com/113374279/222151089-964c88e1-2c5a-4161-b9c6-9f8fb27e2a27.png)
+
 
 
 
