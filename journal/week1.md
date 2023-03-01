@@ -214,15 +214,15 @@ networks:
 
 -  click on `docker-compose.yml` and click `compose up`
 
-![docker](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023-/blob/main/journal/images/docker-composeup.png)
-
 ### Observation:
 
-I had followed all the instructions to build frontend and backend, i ran `docker compose up` and 
+I had followed all the instructions to build frontend and backend, i ran `docker compose up` but i got an error that `Bind for 0.0.0.0 failed:port is already allocated` i used the container id to kill the process. This problem persisted all night till i realised that i could just run `compose up` and the two containers will build at the same time. I did not have to build the containers seprately and subsequently `compose up`. 
+
+![docker](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023-/blob/main/journal/images/docker-composeup.png)
 
 
 
-### Api/create a notification feature, Backend/Frontend
+## Api/Create a notification feature, Backend/Frontend:
 
 
 
