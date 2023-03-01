@@ -38,7 +38,7 @@ Fast deployment, ease of creating new instances, and faster migrations. Ease of 
 
 Docker Hub is a Docker Registry, a cloud-hosted version, open-source, scalable server-side application, and stateless. It can manage the sharing and storage of Docker images. Using Docker, developers can access it as public and create their own private repositories space and automate application build custom functions, work-groups, and webhooks.
 
-Alternatives to Docker:
+### Alternatives to Docker:
 
 1. Amazon Elastic Container Registry (ECR)
 
