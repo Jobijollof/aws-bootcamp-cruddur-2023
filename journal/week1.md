@@ -506,16 +506,16 @@ aws dynamodb scan --table-name Music --query "Items" --endpoint-url http://local
 
 insert in the `gitpod.yml file`
 
-```
 
+```
   - name: postgres
     init: |
       curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
       echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
       sudo apt update
       sudo apt install -y postgresql-client-13 libpq-dev 
-
-```
+```      
+      
 - Copy and paste each line one after the other 
 
 - Install a postgress extension
@@ -523,6 +523,9 @@ insert in the `gitpod.yml file`
 - Add it to `gitpod.yml file`
 
 - `psql -Upostgres --host localhost`
+
+![postgress-final](https://user-images.githubusercontent.com/113374279/222153391-9a7b721b-231f-4b77-898c-24f3b6605f70.png)
+
 
 
 
