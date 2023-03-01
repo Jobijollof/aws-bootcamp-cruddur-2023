@@ -6,14 +6,16 @@ James Spurin  - Docker Captain
 
 Edith Puclla  -  Docker Captain
 
+
+[Spending-considerations](https://youtu.be/OAMHu1NiYoI)
+
 Check  my AWS account to make sure I am still on the free tier and have not incurred 
 any cost.
 
 Go to my avatar on Gitpod to check billing to confirm how much credit I have.
 
-### Week 1 Spending Consideratios:
 
-https://youtu.be/OAMHu1NiYoI
+[Container-Security-Considerations](https://www.youtube.com/watch?v=OjZz4D0B-cA&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=25)	
 
 
 ### What is docker?
