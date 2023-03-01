@@ -180,6 +180,9 @@ CMD ["npm", "start"]
 
 `docker run -p 3000:3000 -d frontend-react-js`
 
+![cruddur](https://user-images.githubusercontent.com/113374279/222032664-7f22330e-d79a-49d7-82c2-2e35d1fd2b48.png)
+
+
 ## Multiple Containers
 
 ### Create a docker-compose file
