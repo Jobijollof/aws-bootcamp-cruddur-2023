@@ -401,6 +401,42 @@ import NotificationsFeedPage from './pages/NotificationsFeedPage';
 
 ![notifications-notify](https://user-images.githubusercontent.com/113374279/222032150-69827040-37df-49f3-9171-36136c064416.png)
 
+### Adding DynamoDB Local and Postgres
+
+We are going to use Postgres and DynamoDB local in future labs We can bring them in as containers and reference them externally
+
+Lets integrate the following into our existing docker compose file:
+
+### Postgres
+
+insert in the `gitpod.yml file`
+
+```
+
+  - name: postgres
+    init: |
+      curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
+      echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
+      sudo apt update
+      sudo apt install -y postgresql-client-13 libpq-dev 
+
+```
+- Copy and paste each line one after the other 
+
+- Install a postgress extension
+
+- Add it to `gitpod.yml file`
+
+
+
+`psql --host localhost`
+
+
+
+
+
+
+
 
 
 
