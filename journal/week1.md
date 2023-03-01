@@ -401,14 +401,14 @@ import NotificationsFeedPage from './pages/NotificationsFeedPage';
 
 ![notifications-notify](https://user-images.githubusercontent.com/113374279/222032150-69827040-37df-49f3-9171-36136c064416.png)
 
-### Adding DynamoDB Local and Postgres
+### Adding DynamoDB Local and Postgres:
 
 We are going to use Postgres and DynamoDB local in future labs We can bring them in as containers and reference them externally
 
 Lets integrate the following into our existing docker compose file:
 
 
-### DynamoDB Local
+### DynamoDB Local:
 
 ```
 dynamodb-local:
@@ -426,6 +426,47 @@ dynamodb-local:
 
 ```    
 
+### Postgres:
+
+```
+services:
+  db:
+    image: postgres:13-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    ports:
+      - '5432:5432'
+    volumes: 
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local
+    
+```
+
+- `docker compose up`
+
+- ![open-ports](https://user-images.githubusercontent.com/113374279/222149836-d6e0908b-3ff8-41b9-a4a4-4e5b2d9c1247.png)
+
+### Create a Table:
+
+```
+
+aws dynamodb create-table \
+    --endpoint-url http://localhost:8000 \
+    --table-name Music \
+    --attribute-definitions \
+        AttributeName=Artist,AttributeType=S \
+        AttributeName=SongTitle,AttributeType=S \
+    --key-schema AttributeName=Artist,KeyType=HASH AttributeName=SongTitle,KeyType=RANGE \
+    --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 \
+    --table-class STANDARD
+
+
+```
+![create-table](https://user-images.githubusercontent.com/113374279/222150420-37620d4e-3270-4381-89a1-83de4f1ed9a8.png)
 
 
 
