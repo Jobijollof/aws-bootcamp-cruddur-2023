@@ -224,6 +224,31 @@ I had followed all the instructions to build frontend and backend, i ran `docker
 
 ## Api/Create a notification feature, Backend/Frontend:
 
+Open `openapi.yml file` and add the following.
+
+
+```
+  /api/activities/notifications:
+    get:
+      description: 'Return a feed of activity for all the people i follow'
+      tags:
+        - activities
+        
+      parameters: []
+      responses:
+        '200':
+          description: Returns an array of activities
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+                
+```          
+          
+                  
+
 
 
 
