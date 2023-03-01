@@ -212,9 +212,9 @@ networks:
 
 ```
 
-- Right click on `docker-compose.yml` and click `compose up`
+-  click on `docker-compose.yml` and click `compose up`
 
-![docker]()
+![docker](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023-/blob/main/journal/images/docker-composeup.png)
 
 ### Observation:
 
