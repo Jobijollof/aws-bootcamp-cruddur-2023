@@ -396,6 +396,9 @@ import NotificationsFeedPage from './pages/NotificationsFeedPage';
 ```
 ![addition](https://user-images.githubusercontent.com/113374279/222031951-18088dc5-8ed0-4b31-b0ee-dc464ae179eb.png)
 
+![notifications-notify](https://user-images.githubusercontent.com/113374279/222032150-69827040-37df-49f3-9171-36136c064416.png)
+
+
 
 
 
