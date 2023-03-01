@@ -214,7 +214,17 @@ networks:
 
 - Right click on `docker-compose.yml` and click `compose up`
 
+![docker]()
+
+### Observation:
+
+I had followed all the instructions to build frontend and backend, i ran `docker compose up` and 
+
+
+
 ### Api/create a notification feature, Backend/Frontend
+
+
 
 
 
