@@ -484,23 +484,22 @@ aws dynamodb put-item \
 ![create-item](https://user-images.githubusercontent.com/113374279/222151089-964c88e1-2c5a-4161-b9c6-9f8fb27e2a27.png)
 
 
+### List Tables:
 
+```
+aws dynamodb list-tables --endpoint-url http://localhost:8000
 
+```
 
+![list-tables](https://user-images.githubusercontent.com/113374279/222151986-3662df51-367d-47ca-b054-04419298b4d5.png)
 
+### Get Records:
 
+```
+aws dynamodb scan --table-name Music --query "Items" --endpoint-url http://localhost:8000
 
-
-
-
-
-
-
-
-
-
-
-
+```
+![lastdynamo](https://user-images.githubusercontent.com/113374279/222152469-ae4196f6-05e4-41d3-8b43-29da896873dd.png)
 
 
 ### Postgres
