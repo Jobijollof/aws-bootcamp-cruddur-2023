@@ -388,6 +388,13 @@ import NotificationsFeedPage from './pages/NotificationsFeedPage';
 ```
 
 ```
+{
+  path: "/notifications",
+  element: <NotificationsFeedPage />
+},
+
+```
+![addition](https://user-images.githubusercontent.com/113374279/222031951-18088dc5-8ed0-4b31-b0ee-dc464ae179eb.png)
 
 
 
