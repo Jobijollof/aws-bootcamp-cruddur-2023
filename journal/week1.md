@@ -427,9 +427,12 @@ insert in the `gitpod.yml file`
 
 - Add it to `gitpod.yml file`
 
+- `psql -Upostgres --host localhost`
 
 
-`psql --host localhost`
+
+
+
 
 
 
