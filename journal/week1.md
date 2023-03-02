@@ -527,6 +527,29 @@ insert in the `gitpod.yml file`
 ![postgress-final](https://user-images.githubusercontent.com/113374279/222153391-9a7b721b-231f-4b77-898c-24f3b6605f70.png)
 
 
+## Home work Challenge: 🏋️‍♀️🏋️‍♀️🏋️‍♀️🏋️‍♀️🏋️‍♀️
+
+### Push and tag a image to DockerHub
+
+- Create an account [docker-hub](https://hub.docker.com/)
+I already had an account so i logged in. 
+
+- Create a repository by clicking on `create repositry`
+
+- Pick a name for the repository (i choose cruddrapp_docker) add a description for the repository and click Create.
+
+- Login to Docker hub from Gitpod.
+
+- Launch Gitpod 
+
+- Type `Docker login`
+
+
+
+
+
+
+
 
 
 
