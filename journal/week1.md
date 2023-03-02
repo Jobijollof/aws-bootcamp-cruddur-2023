@@ -1,3 +1,4 @@
+![docker-login](https://user-images.githubusercontent.com/113374279/222396733-aee0bbf5-b5ee-4e0f-bcef-88e5af1a643e.png)
 # Week 1 — App Containerization
 
 Guest Instructors:
@@ -531,7 +532,7 @@ insert in the `gitpod.yml file`
 
 ### Push and tag a image to DockerHub
 
-- Create an account [docker-hub](https://hub.docker.com/)
+- Create an account 
 I already had an account so i logged in. 
 
 - Create a repository by clicking on `create repositry`
@@ -543,6 +544,35 @@ I already had an account so i logged in.
 - Launch Gitpod 
 
 - Type `Docker login`
+
+[docker-hub](https://hub.docker.com/)
+
+- `docker compose up` This is to run the containers and get the container ID  
+
+- `docker images`
+
+![docker-images](https://user-images.githubusercontent.com/113374279/222397488-350e2e72-022a-4861-9e5f-4beed95272a1.png)
+
+### Tag your image:
+
+`docker tag 0d6e108f36d5 jobinaarinze/cruddrapp_docker:first-try` (name of tag first-try)
+
+### Push the image:
+
+`docker push jobinaarinze/cruddrapp_docker:first-try`
+
+![docker-push](https://user-images.githubusercontent.com/113374279/222398479-533f8554-07de-4cb2-8534-b43f8272f679.png)
+
+
+![push-hub](https://user-images.githubusercontent.com/113374279/222398626-515acb45-1384-4771-be15-c5fe76aae082.png)
+
+
+
+
+
+
+
+
 
 
 
