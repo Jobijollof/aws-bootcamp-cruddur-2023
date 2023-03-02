@@ -1,4 +1,4 @@
-![docker-login](https://user-images.githubusercontent.com/113374279/222396733-aee0bbf5-b5ee-4e0f-bcef-88e5af1a643e.png)
+
 # Week 1 — App Containerization
 
 Guest Instructors:
@@ -532,7 +532,7 @@ insert in the `gitpod.yml file`
 
 ### Push and tag a image to DockerHub
 
-- Create an account 
+- Create an account [docker-hub](https://hub.docker.com/)
 I already had an account so i logged in. 
 
 - Create a repository by clicking on `create repositry`
@@ -545,11 +545,11 @@ I already had an account so i logged in.
 
 - Type `Docker login`
 
-[docker-hub](https://hub.docker.com/)
+![docker-login](https://user-images.githubusercontent.com/113374279/222396733-aee0bbf5-b5ee-4e0f-bcef-88e5af1a643e.png)
 
-- `docker compose up` This is to run the containers and get the container ID  
+ `docker compose up` This is to run the containers and get the container ID  
 
-- `docker images`
+ `docker images`
 
 ![docker-images](https://user-images.githubusercontent.com/113374279/222397488-350e2e72-022a-4861-9e5f-4beed95272a1.png)
 
