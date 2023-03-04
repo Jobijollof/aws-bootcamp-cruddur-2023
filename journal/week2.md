@@ -86,7 +86,9 @@ copy everything except the above line.
 
 `docker compose up`
 
-- Added the following codes to `gitpod.yml` to keep ports open
+![docker-composeup]
+
+- Added the following codes to `gitpod.yml` to keep ports open to avaid manually opening it.
 
 ```
 ports:
