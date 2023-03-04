@@ -131,3 +131,22 @@ tracer = trace.get_tracer("home.activities")`
 with tracer.start_as_current_span("home-activities-mock-data"):
 
 ```
+
+- Adding Attributes to the span
+
+Back to honeycombs python docs, copy command for adding attributes,  added it to `home_activities.py` file.
+
+```
+span = trace.get_current_span()
+span.set_attribute("user.id", user.id())
+
+```
+
+Edit this to this:
+
+```
+span.set_attribute("app.now", now.isofformat()) 
+span.set_attribute("app.result_length", len(results))
+
+```
+
