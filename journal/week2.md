@@ -78,3 +78,29 @@ RequestsInstrumentor().instrument()
 `app = Flask(__name__)` already exists in `app.py`
 copy everything except the above line.
 
+
+
+`cd frontend-react-js`
+
+`npm i`
+
+`docker compose up`
+
+- Added the following codes to `gitpod.yml` to keep ports open
+
+```
+ports:
+  - name: frontend
+    port: 3000
+    onOpen: open-browser
+    visibility: public
+  - name: backend
+    port: 4567
+    visibility: public
+  - name: xray-daemon
+    port: 2000
+    visibility: public
+
+```
+
+
