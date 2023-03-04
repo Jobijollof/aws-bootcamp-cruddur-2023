@@ -1,5 +1,9 @@
 # Week 2 — Distributed Tracing
 
+Instructor:
+
+Jessica Joy Kerr
+
 Api Keys determine where data will land. Each enviroment has its own unique API key.
 
 
@@ -113,3 +117,17 @@ Solution:
 I unset the OTEL_SERVICE_NAME variable by running `unset OTEL_SERVICE_NAME`
 The second mistake, was tIat i was running `npm i` in the backend.  The frontend was no longer receiving data.
 I checked the logs and I got an error, `react-script:not found`. I realised my mistake and did the right thing by running `the npm i` in the frontend and everything worked and Honeycomb had started receiving my Data.
+
+### Hardcoding a SPAN
+
+We are harcoding ``/api/activities/home`
+At {honeycomb docs](https://docs.honeycomb.io/getting-data-in/opentelemetry/python/) check for the required command to aquire a tracer.
+
+Copy the following into `home_activities.py`
+
+```
+from opentelemetry import trace` 
+tracer = trace.get_tracer("home.activities")` 
+with tracer.start_as_current_span("home-activities-mock-data"):
+
+```
