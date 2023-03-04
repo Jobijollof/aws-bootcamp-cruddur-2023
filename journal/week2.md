@@ -105,4 +105,11 @@ ports:
 
 ```
 
+Debugging time:
 
+The first mistake was Iset OTEL_SERVICE_NAME: as Cruddur. 
+I got an error concerning the service name. (forgot to take pictures) 
+Solution:
+I unset the OTEL_SERVICE_NAME variable by running `unset OTEL_SERVICE_NAME`
+The second mistake, was tIat i was running `npm i` in the backend.  The frontend was no longer receiving data.
+I checked the logs and I got an error, `react-script:not found`. I realised my mistake and did the right thing by running `the npm i` in the frontend and everything worked and Honeycomb had started receiving my Data.
