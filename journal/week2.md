@@ -145,7 +145,7 @@ span.set_attribute("user.id", user.id())
 Edit this to this:
 
 ```
-span.set_attribute("app.now", now.isofformat()) 
+span.set_attribute("app.now", now.isoformat()) 
 span.set_attribute("app.result_length", len(results))
 
 ```
