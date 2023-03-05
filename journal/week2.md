@@ -4,7 +4,7 @@
 
 Jessica Joy Kerr
 
-### Distributed Tracing: [Class](https://www.youtube.com/live/2GD9xCzRId4?feature=share)
+### Distributed Tracing: 
 
 This week was a bit technical for me. Ordinarily after class, or when i watch the instructional video i get a hang of what is being taught. However with a little bit of personal research i was able to figure out what the class was about. 
 
@@ -35,6 +35,7 @@ Distributed tracing, on the other hand, is a technique used to profile and monit
 In summary, while tracing is focused on individual components or services, distributed tracing is focused on the interactions between those components or services as requests flow through the system. Distributed tracing provides a more holistic view of system performance and behavior, enabling engineers to identify issues that may be difficult or impossible to detect through traditional tracing techniques.
 
 ### Tools for Distributed Tracing:
+
 There are a myraid of tools for distributed tracing but for the purpose of this bootcamp, we are limited to:
 
 - Honeycomb
@@ -44,7 +45,9 @@ There are a myraid of tools for distributed tracing but for the purpose of this 
 - Roll Bar
 
 
-### Honeycomb:
+## Honeycomb: 
+
+[Instructional-Video](https://www.youtube.com/live/2GD9xCzRId4?feature=share)
 
 Honeycomb is a full-stack cloud-based observability tool with support for events, logs, and traces. Honeycomb provides an easy-to-use distributed tracing solution.
 Some of the key features of the Honeycomb distributed tracing tool includes:
@@ -73,7 +76,8 @@ Kindly note that Api Keys determine where data will land. Each enviroment has it
 
 
 ### Set Environment variables:
-(`gp env` is to make the enviroment variable persist when gitpod is restarted)
+
+`gp env` is to make the enviroment variable persist when gitpod is restarted.
 
 ```
 export HONEYCOMB_API_KEY="Your API Key from the created environment"
@@ -241,10 +245,7 @@ with tracer.start_as_current_span("home-activities-mock-data"):
 ![data-tree](https://user-images.githubusercontent.com/113374279/222980614-7e432792-a3b4-4c4c-80f7-d49f15621c7f.png)
 
 
-
-
-
-- Adding Attributes to the span
+### Adding Attributes to the span
 
 Back to honeycombs python docs, copy command for adding attributes,  added it to `home_activities.py` file.
 
@@ -261,4 +262,6 @@ span.set_attribute("app.now", now.isoformat())
 span.set_attribute("app.result_length", len(results))
 
 ```
+
+## AWS XRAY
 
