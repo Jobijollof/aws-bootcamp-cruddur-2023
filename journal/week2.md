@@ -188,15 +188,36 @@ ports:
 
 - Run `docker compose up`
 
+![docker-composeup](https://user-images.githubusercontent.com/113374279/222978734-b349d5b3-be67-46bf-9f17-6cdb10451af1.png)
+
+- Backend 
+
+![backend-honey](https://user-images.githubusercontent.com/113374279/222978852-3625ac2d-9a4b-4a45-b17b-7f257a4ec0cb.png)
+
+- Frontend
+
+![front-end](https://user-images.githubusercontent.com/113374279/222978907-34df5758-c9c1-4114-97dd-baf3688018b5.png)
+
 
 Debugging time:
 
-The first mistake was Iset OTEL_SERVICE_NAME: as Cruddur. 
-I got an error concerning the service name. (forgot to take pictures) 
+The first mistake was I set `OTEL_SERVICE_NAME:` as Cruddur. 
+I got an error concerning the service name. (forgot to take pictures) so, honeycomb was not receiving any data.
 Solution:
 I unset the OTEL_SERVICE_NAME variable by running `unset OTEL_SERVICE_NAME`
-The second mistake, was tIat i was running `npm i` in the backend.  The frontend was no longer receiving data.
-I checked the logs and I got an error, `react-script:not found`. I realised my mistake and did the right thing by running `the npm i` in the frontend and everything worked and Honeycomb had started receiving my Data.
+I then did a `docker compose down`
+After that i had to re-start the containers, i opened the links in the ports and i wasnt getting any data from the frontend. The backend was working perfectly. 
+I checked the logs and I got an error, `react-script:not found`. I realised  that i was running `npm i` in the backend🤦‍♀️🤦‍♀️.
+So, docker compose down again, changed directory to the frontend, started the containers and viola 💃💃💃💃
+
+![dataset](https://user-images.githubusercontent.com/113374279/222979375-e03d466e-3c53-49f1-a52e-dc62afc1789d.png)
+
+
+![datafrom-honey](https://user-images.githubusercontent.com/113374279/222979996-fcd40541-ce62-476d-a695-61bac6274f08.png)
+
+
+![api-call](https://user-images.githubusercontent.com/113374279/222980041-d9a2fd63-8521-4a50-8214-acd598cd3038.png)
+
 
 ### Hardcoding a SPAN
 
