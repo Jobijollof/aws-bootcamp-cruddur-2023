@@ -237,6 +237,13 @@ with tracer.start_as_current_span("home-activities-mock-data"):
 ![hard-coding tracer](https://user-images.githubusercontent.com/113374279/222980380-31f4c20e-996c-40dc-a38e-b7ebe5def33a.png)
 
 
+
+![data-tree](https://user-images.githubusercontent.com/113374279/222980614-7e432792-a3b4-4c4c-80f7-d49f15621c7f.png)
+
+
+
+
+
 - Adding Attributes to the span
 
 Back to honeycombs python docs, copy command for adding attributes,  added it to `home_activities.py` file.
