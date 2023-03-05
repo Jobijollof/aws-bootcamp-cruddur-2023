@@ -34,9 +34,41 @@ Distributed tracing, on the other hand, is a technique used to profile and monit
 
 In summary, while tracing is focused on individual components or services, distributed tracing is focused on the interactions between those components or services as requests flow through the system. Distributed tracing provides a more holistic view of system performance and behavior, enabling engineers to identify issues that may be difficult or impossible to detect through traditional tracing techniques.
 
+### Tools for Distributed Tracing:
+There are a myraid of tools for distributed tracing but for the purpose of this bootcamp, we are limited to:
+
+- Honeycomb
+
+- AWS-XRay/Cloud Watch logs
+
+- Roll Bar
 
 
-Api Keys determine where data will land. Each enviroment has its own unique API key.
+### Honeycomb:
+
+Honeycomb is a full-stack cloud-based observability tool with support for events, logs, and traces. Honeycomb provides an easy-to-use distributed tracing solution.
+Some of the key features of the Honeycomb distributed tracing tool includes:
+
+- Quickly diagnose bottlenecks and optimize performance with a waterfall view to understand how your system is processing service requests
+
+- Full-text search over trace spans and toggle to collapse and expand sections of trace waterfalls
+
+- Provides Honeycomb beelines to automatically define key pieces of trace data like serviceName, name, timestamp, duration, traceID, etc.
+
+### Implementing Honeycomb:
+
+- Sign into [Honeycomb](https://ui.honeycomb.io/)
+
+- Create a test environment
+
+![create-enviroment](https://user-images.githubusercontent.com/113374279/222975439-74473c77-6ce1-451b-8256-5eca071fcea8.png)
+
+- Choose a Name, pick a Colour and create the environment
+
+![create-enviroment-purple](https://user-images.githubusercontent.com/113374279/222975529-9e68fd96-75c1-4e21-a16a-8253a7df1ec8.png)
+
+
+Kindly note that Api Keys determine where data will land. Each enviroment has its own unique API key.
 
 
 - Set Environment variables:(gp env is to make the enviroment variable persist when gitpod is restarted)
@@ -51,7 +83,8 @@ env | grep HONEY
 ```
 ![en-var](https://user-images.githubusercontent.com/113374279/222973463-b5406c55-7378-4789-bef4-c084fcb97467.png)
 
-### What is the significance of Exporting Environment Variables: if you export, any sub command you run which has its own  the sub-shells will get the set environment variable. If you do not export, the set enviroment  variable is set only for that shell.
+### What is the significance of Exporting Environment Variables:
+If you export, any sub command you run which has its own sub-shells will get the set environment variable. If you do not export, the set enviroment  variable is set only for that shell.
 
 Add the following Env Vars to `backend-flask` in docker compose
 
