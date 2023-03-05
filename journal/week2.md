@@ -67,11 +67,13 @@ Some of the key features of the Honeycomb distributed tracing tool includes:
 
 ![create-enviroment-purple](https://user-images.githubusercontent.com/113374279/222975529-9e68fd96-75c1-4e21-a16a-8253a7df1ec8.png)
 
+- Copy the API key and go back to Gipod
 
 Kindly note that Api Keys determine where data will land. Each enviroment has its own unique API key.
 
 
-- Set Environment variables:(gp env is to make the enviroment variable persist when gitpod is restarted)
+### Set Environment variables:
+(`gp env` is to make the enviroment variable persist when gitpod is restarted)
 
 ```
 export HONEYCOMB_API_KEY="Your API Key from the created environment"
@@ -84,6 +86,7 @@ env | grep HONEY
 ![en-var](https://user-images.githubusercontent.com/113374279/222973463-b5406c55-7378-4789-bef4-c084fcb97467.png)
 
 ### What is the significance of Exporting Environment Variables:
+
 If you export, any sub command you run which has its own sub-shells will get the set environment variable. If you do not export, the set enviroment  variable is set only for that shell.
 
 Add the following Env Vars to `backend-flask` in docker compose
@@ -94,6 +97,8 @@ OTEL_EXPORTER_OTLP_HEADERS: "x-honeycomb-team=${HONEYCOMB_API_KEY}"
 OTEL_SERVICE_NAME: "${HONEYCOMB_SERVICE_NAME}"
 
 ```
+![backend-flask](https://user-images.githubusercontent.com/113374279/222976595-0514d819-b7c6-45a1-9069-c8f35176c5a6.png)
+
 On honeycombs  python instruction section, copied the installation commands there and added them to my requirements.txt file
 - Add the following files to our `requirements.txt`
 
