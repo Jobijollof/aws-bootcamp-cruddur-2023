@@ -57,7 +57,7 @@ Some of the key features of the Honeycomb distributed tracing tool includes:
 
 ### Implementing Honeycomb:
 
-- Sign into [Honeycomb](https://ui.honeycomb.io/)
+- Sign in/up [Honeycomb](https://ui.honeycomb.io/)
 
 - Create a test environment
 
@@ -89,7 +89,7 @@ env | grep HONEY
 
 If you export, any sub command you run which has its own sub-shells will get the set environment variable. If you do not export, the set enviroment  variable is set only for that shell.
 
-Add the following Env Vars to `backend-flask` in docker compose
+- Set  honeycomb service name and add the OTEL service name, endpoint and headers to  `docker-compose.yml file`
 
 ```
 OTEL_EXPORTER_OTLP_ENDPOINT: "https://api.honeycomb.io"
