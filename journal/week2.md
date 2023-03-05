@@ -49,9 +49,9 @@ gp env HONEYCOMB_SERVICE_NAME="Cruddur"
 env | grep HONEY
 
 ```
-![env]()
+![en-var](https://user-images.githubusercontent.com/113374279/222973463-b5406c55-7378-4789-bef4-c084fcb97467.png)
 
-Exporting Environment Variables: if you export, any sub command you run which has its own  the sub-shells will get the set environment variable. If you do not export, the set enviroment  variable is set only for that shell.
+### What is the significance of Exporting Environment Variables: if you export, any sub command you run which has its own  the sub-shells will get the set environment variable. If you do not export, the set enviroment  variable is set only for that shell.
 
 Add the following Env Vars to `backend-flask` in docker compose
 
