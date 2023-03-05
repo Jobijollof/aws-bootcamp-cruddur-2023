@@ -218,11 +218,13 @@ So, docker compose down again, changed directory to the frontend, started the co
 
 ![api-call](https://user-images.githubusercontent.com/113374279/222980041-d9a2fd63-8521-4a50-8214-acd598cd3038.png)
 
+### SPAN Honeycomb:
+A span is one event to Honeycomb. That event has fields, like parentID and traceID , which describe that span's relationship to other spans. A trace ties together a unit of work that occurs across multiple events (or spans) in a distributed service. A trace is a group of spans that all share the same traceID .
 
-### Hardcoding a SPAN
+### Implementing Hardcoding a SPAN:
 
 We are harcoding ``/api/activities/home`
-At {honeycomb docs](https://docs.honeycomb.io/getting-data-in/opentelemetry/python/) check for the required command to aquire a tracer.
+At [honeycomb docs](https://docs.honeycomb.io/getting-data-in/opentelemetry/python/) check for the required command to aquire a tracer.
 
 Copy the following into `home_activities.py`
 
@@ -232,6 +234,8 @@ tracer = trace.get_tracer("home.activities")`
 with tracer.start_as_current_span("home-activities-mock-data"):
 
 ```
+![hard-coding tracer](https://user-images.githubusercontent.com/113374279/222980380-31f4c20e-996c-40dc-a38e-b7ebe5def33a.png)
+
 
 - Adding Attributes to the span
 
