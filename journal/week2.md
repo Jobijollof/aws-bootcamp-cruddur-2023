@@ -4,6 +4,13 @@ Instructor:
 
 Jessica Joy Kerr
 
+Distributed Tracing: [Class](https://www.youtube.com/live/2GD9xCzRId4?feature=share)
+
+This week was a bit technical for me. Ordinarily after class, or when i watch the instructional videos i get a hang of what is being taught. Dont get me wrong, i understood generally that we were trying to trace the latency or otherwise of our app but the technicality of it was overwhelming. However, with a little more research i found this article which was very helpful.[Article](https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html)
+
+Distributed tracing is a method of tracking application requests as they flow from frontend devices to backend services and databases. Developers can use distributed tracing to troubleshoot requests that exhibit high latency or errors.
+
+
 Api Keys determine where data will land. Each enviroment has its own unique API key.
 
 
@@ -17,6 +24,7 @@ gp env HONEYCOMB_SERVICE_NAME="Cruddur"
 env | grep HONEY
 
 ```
+![env]()
 
 Exporting Environment Variables: if you export, any sub command you run which has its own  the sub-shells will get the set environment variable. If you do not export, the set enviroment  variable is set only for that shell.
 
