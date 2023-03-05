@@ -1,14 +1,39 @@
 # Week 2 — Distributed Tracing
 
-Instructor:
+## Instructor:
 
 Jessica Joy Kerr
 
-Distributed Tracing: [Class](https://www.youtube.com/live/2GD9xCzRId4?feature=share)
+### Distributed Tracing: [Class](https://www.youtube.com/live/2GD9xCzRId4?feature=share)
 
-This week was a bit technical for me. Ordinarily after class, or when i watch the instructional videos i get a hang of what is being taught. Dont get me wrong, i understood generally that we were trying to trace the latency or otherwise of our app but the technicality of it was overwhelming. However, with a little more research i found this article which was very helpful.[Article](https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html)
+This week was a bit technical for me. Ordinarily after class, or when i watch the instructional video i get a hang of what is being taught. However with a little bit of personal research i was able to figure out what the class was about. 
 
-Distributed tracing is a method of tracking application requests as they flow from frontend devices to backend services and databases. Developers can use distributed tracing to troubleshoot requests that exhibit high latency or errors.
+### What is Distributed Tracing?
+
+Distributed tracing is a method of tracking application requests as they flow from frontend devices to backend services and databases. 
+Developers can use distributed tracing to troubleshoot requests that exhibit high latency or errors.
+
+It is also a method of monitoring and observing service requests in applications built on a microservices architecture(remember monolith architecture in week 0?). Distributed tracing is used by IT and DevOps teams to track requests or transactions through the application they are monitoring — gaining vital end-to-end observability into that journey. This lets them identify any issues, including bottlenecks and bugs, that could be having a negative impact on the application’s performance and affect user experience.
+
+
+In other words, distributed tracing is a technique used to profile and monitor distributed systems. It involves collecting and correlating traces of requests as they traverse a distributed system, allowing engineers to understand the end-to-end latency, identify bottlenecks, and troubleshoot errors or performance issues.
+
+In a distributed system, a single request may be processed by multiple microservices or components, each of which may be owned by a different team or organization. Distributed tracing allows engineers to trace the path of a request as it moves through these different services and components, collecting metadata such as timestamps, status codes, and other relevant information at each step.
+
+Distributed tracing relies on instrumentation of each service or component in the system, which typically involves injecting unique identifiers into the request headers or payloads. These identifiers can then be used to correlate related requests and build a trace that shows the entire path of a request as it moves through the system.
+
+Distributed tracing is a critical tool for troubleshooting and optimizing the performance of complex distributed systems, particularly in the context of modern microservices architectures.
+
+### Is there a difference between Tracing and Distributed Tracing?
+
+While tracing and distributed tracing are related concepts they however differ in scope and application.
+
+Tracing refers to the process of monitoring and recording the execution of individual requests or transactions within a system. It typically involves instrumenting individual components or services to log events, timings, and other relevant data. Tracing is often used to troubleshoot issues within a ***SINGLE COMPONENT*** or service, such as identifying bottlenecks or errors.
+
+Distributed tracing, on the other hand, is a technique used to profile and monitor distributed systems that involve ***MULTIPLE COMPONENTS*** or services. It involves collecting and correlating traces of requests as they traverse a distributed system, allowing engineers to understand the end-to-end latency, identify bottlenecks, and troubleshoot errors or performance issues. Distributed tracing typically requires instrumenting multiple components or services to capture data about the entire request path.
+
+In summary, while tracing is focused on individual components or services, distributed tracing is focused on the interactions between those components or services as requests flow through the system. Distributed tracing provides a more holistic view of system performance and behavior, enabling engineers to identify issues that may be difficult or impossible to detect through traditional tracing techniques.
+
 
 
 Api Keys determine where data will land. Each enviroment has its own unique API key.
