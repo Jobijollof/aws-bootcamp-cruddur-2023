@@ -99,8 +99,13 @@ OTEL_SERVICE_NAME: "${HONEYCOMB_SERVICE_NAME}"
 ```
 ![backend-flask](https://user-images.githubusercontent.com/113374279/222976595-0514d819-b7c6-45a1-9069-c8f35176c5a6.png)
 
-On honeycombs  python instruction section, copied the installation commands there and added them to my requirements.txt file
-- Add the following files to our `requirements.txt`
+- Change dirctory to back-end-flask. `cd backend-flask`
+
+On honeycomb  python instruction section, copy the installation commands there and add them to  `requirements.txt` file
+
+![honeycomp-python](https://user-images.githubusercontent.com/113374279/222977919-79a4b47f-5f69-4247-a33c-5b9a14d41a9e.png)
+
+
 
 ```
 opentelemetry-api
@@ -110,12 +115,16 @@ opentelemetry-instrumentation-flask
 opentelemetry-instrumentation-requests 
 
 ```
+ 
+![install-package](https://user-images.githubusercontent.com/113374279/222978222-a205a4cb-7adf-4474-a174-585e28679024.png)
 
-`cd backend-flask` 
+ - run `pip install -r requirements.txt`
 
-- run `pip install -r requirements.txt`
 
 -  copy the import statements from initialize section and paste it in  `app.py` file
+
+![initialise-apppy](https://user-images.githubusercontent.com/113374279/222978097-a4c18b7b-e987-4935-b43d-3c48acc0e7a5.png)
+
 
 ```
 # Honeycomb..................
@@ -153,17 +162,10 @@ RequestsInstrumentor().instrument()
 `app = Flask(__name__)` already exists in `app.py`
 copy everything except the above line.
 
+![code-appy](https://user-images.githubusercontent.com/113374279/222978588-e9993a95-41e9-4e91-9470-0fba4923e76e.png)
 
 
-`cd frontend-react-js`
-
-`npm i`
-
-`docker compose up`
-
-![docker-composeup]
-
-- Added the following codes to `gitpod.yml` to keep ports open to avaid manually opening it.
+- Add the following codes to `gitpod.yml` to automaticlly unlock ports.
 
 ```
 ports:
@@ -179,6 +181,13 @@ ports:
     visibility: public
 
 ```
+
+- Change directory to frontend `cd frontend-react-js`
+
+- Run `npm i`
+
+- Run `docker compose up`
+
 
 Debugging time:
 
