@@ -50,19 +50,6 @@ It is a disposable micro-blogging platform.
 - Create [Rollbar account](https://www.youtube.com/watch?v=Lpm6oAP3Fb0&list=PLBfufR7vyJJ7k25byhRXJldB5AiwgNnWv&index=11)
 
 
-### Tools for building:
-
-1. SQL and No SQL databases
-
-2. Realtime modern APis
-
-3. Multiple containers services(*microservices)
-
-4. A CI/CD pipeline
-
-5. Decentralized Authentication and more
-
-
 ### Week 0 Guest instructors:
 
 - Margaret Valtierra (AWS Community hero)
