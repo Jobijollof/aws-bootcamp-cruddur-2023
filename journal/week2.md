@@ -304,7 +304,7 @@ provider.add_span_processor(simple_processor)
 
 ### Setup AWS X-RAY Resources
 
-- Create an `xray.json`  in  `aws/json` folder.
+- Create an `xray.json` file  in  `aws/json` folder.
 
 - Add the commands below in the json file.
 
