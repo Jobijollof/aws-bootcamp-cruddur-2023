@@ -205,10 +205,10 @@ ports:
 
 Debugging time:
 
-The first mistake was I set `OTEL_SERVICE_NAME:` as Cruddur. 
+I think the enviroment variable  `OTEL_SERVICE_NAME:` as Cruddur was not properly set. 
 I got an error concerning the service name. (forgot to take pictures) so, honeycomb was not receiving any data.
 Solution:
-I unset the OTEL_SERVICE_NAME variable by running `unset OTEL_SERVICE_NAME`
+I unset the OTEL_SERVICE_NAME variable by running `unset OTEL_SERVICE_NAME` and exprted the variable name again.
 I then did a `docker compose down`
 After that i had to re-start the containers, i opened the links in the ports and i wasnt getting any data from the frontend. The backend was working perfectly. 
 I checked the logs and I got an error, `react-script:not found`. I realised  that i was running `npm i` in the backend🤦‍♀️🤦‍♀️.
@@ -258,6 +258,7 @@ span.set_attribute("user.id", user.id())
 Edit this to this:
 
 ```
+span = trace.get_current_span()
 span.set_attribute("app.now", now.isoformat()) 
 span.set_attribute("app.result_length", len(results))
 
