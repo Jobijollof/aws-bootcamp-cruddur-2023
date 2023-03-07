@@ -266,3 +266,16 @@ span.set_attribute("app.result_length", len(results))
 
 ## AWS XRAY
 
+- Change directory to `frontend-react-js`
+
+- Run `npm i`
+
+- Go to `backend-flask` open  `requirements.txt` and paste the following
+
+`aws-xray-sdk`
+
+- Change directory to `backend-flask` and run:
+
+`pip install -r requirements.txt` to install dependencies.
+
+In the backend go to `app.py` a
