@@ -9,11 +9,10 @@ tasks:
       sudo ./aws/install
       cd $THEIA_WORKSPACE_ROOT
  
-  - name: npm-install
+  - name: react-js
     command:
-      cd /workspace/aws-bootcamp-cruddur-2023/frontend-react-js
+      cd frontend-react-js
       npm i
-      exit
   
   - name: postgres
     init: |
