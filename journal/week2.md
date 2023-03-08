@@ -339,3 +339,28 @@ aws xray create-group \
    --filter-expression "service(\"backend-flask\")"
 
 ```
+
+
+- Create a sampling rule
+
+```
+aws xray create-sampling-rule --cli-input-json file://aws/json/xray.json
+
+```
+
+-AWS Xray Daemon
+
+Paste this into the `docker-compose.yml` file
+
+xray-daemon:
+    image: "amazon/aws-xray-daemon"
+    environment:
+      AWS_ACCESS_KEY_ID: "${AWS_ACCESS_KEY_ID}"
+      AWS_SECRET_ACCESS_KEY: "${AWS_SECRET_ACCESS_KEY}"
+      AWS_REGION: "us-east-1"
+    command:
+      - "xray -o -b xray-daemon:2000"
+    ports:
+      - 2000:2000/udp
+
+
