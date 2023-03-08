@@ -295,13 +295,6 @@ XRayMiddleware(app, xray_recorder)
 
 ```
 
-```
-# Show this in the logs within the backend-flask app (STDOUT)
-simple_processor = SimpleSpanProcessor(ConsoleSpanExporter())
-provider.add_span_processor(simple_processor)
-
-```
-
 ### Setup AWS X-RAY Resources
 
 - Create an `xray.json` file  in  `aws/json` folder.
@@ -363,4 +356,16 @@ xray-daemon:
     ports:
       - 2000:2000/udp
 
+```
+Add these two environment variables to the `backend-flask` section of my `docker-compose.yml` file.
 
+```
+AWS_XRAY_URL: "*4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}*"
+AWS_XRAY_DAEMON_ADDRESS: "xray-daemon:2000"
+
+```
+
+- Run `docker compose up`
+
+
+- Hit any api to get data in AWS/Xray/query
