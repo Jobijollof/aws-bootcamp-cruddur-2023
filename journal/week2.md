@@ -369,3 +369,54 @@ AWS_XRAY_DAEMON_ADDRESS: "xray-daemon:2000"
 
 
 - Hit any api to get data in AWS/Xray/query
+
+
+### Rollbar
+
+- Sign in/up to [Rollbar](rollbar.com)
+
+- Choose the app you want in our case Flask (backend)
+
+- In `backend-flask` open `requirement.txt`  and paste the following code:
+
+`blinker`
+
+`rollbar`
+
+- Change directory to 'backend-flask' and Run:
+
+`pip install -r requirements.txt`
+
+- Copy access token  from rollbar and save it as an env var .
+
+- Add the following commands from [rollbar](https://app.rollbar.com/a/jobinaibegbulem) to  `app.py` file.
+
+```
+import os
+import rollbar
+import rollbar.contrib.flask
+from flask import got_request_exception
+
+```
+
+```
+rollbar_access_token = os.getenv('ROLLBAR_ACCESS_TOKEN')
+@app.before_first_request
+def init_rollbar():
+    """init rollbar module"""
+    rollbar.init(
+        # access token
+        rollbar_access_token,
+        # environment name
+        'production',
+        # server root directory, makes tracebacks prettier
+        root=os.path.dirname(os.path.realpath(__file__)),
+        # flask already sets up logging
+        allow_logging_basic_config=False)
+
+    # send exceptions from `app` to rollbar, using flask's signal system.
+    got_request_exception.connect(rollbar.contrib.flask.report_exception, app)
+
+```
+
+
