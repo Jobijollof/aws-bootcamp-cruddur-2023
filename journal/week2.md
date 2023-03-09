@@ -419,4 +419,14 @@ def init_rollbar():
 
 ```
 
+```
+@app.route('/rollbar/test')
+def rollbar_test():
+    rollbar.report_message('Hello World!', 'warning')
+    return "Hello World!"
 
+```
+
+`docker compose up`
+
+- Test Rollbar endpoint
