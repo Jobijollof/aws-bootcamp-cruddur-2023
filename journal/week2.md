@@ -374,6 +374,7 @@ aws xray create-sampling-rule --cli-input-json file://aws/json/xray.json
 
 Paste this into the `docker-compose.yml` file
 
+```
 xray-daemon:
     image: "amazon/aws-xray-daemon"
     environment:
@@ -390,9 +391,8 @@ xray-daemon:
 ![x-ray daemon](https://user-images.githubusercontent.com/113374279/224205888-6a336b8a-b2c5-414f-a075-7b801e1cce1e.png)
 
 
-
-
 - Add these two environment variables to the `backend-flask` section of  `docker-compose.yml` file.
+
 
 ```
 AWS_XRAY_URL: "*4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}*"
