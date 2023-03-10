@@ -247,7 +247,7 @@ with tracer.start_as_current_span("home-activities-mock-data"):
 
 ### Adding Attributes to the span
 
-Back to honeycombs python docs, copy command for adding attributes,  added it to `home_activities.py` file.
+Back to honeycombs python docs, copy command for adding attributes,  add it to `home_activities.py` file.
 
 ```
 span = trace.get_current_span()
@@ -263,6 +263,19 @@ span.set_attribute("app.now", now.isoformat())
 span.set_attribute("app.result_length", len(results))
 
 ```
+![insofor](https://user-images.githubusercontent.com/113374279/224195366-78a00bc0-8975-4568-b28b-30d48bbc1be5.png)
+
+![2nd](https://user-images.githubusercontent.com/113374279/224195906-6680fe6c-109d-48fe-a858-2854cf9b657b.png)
+
+- Refresh honeycomb web pages and revisited my honeycome query page
+
+![last-honey](https://user-images.githubusercontent.com/113374279/224196681-7f923292-0524-4c70-85ae-d8cd5ba39cac.png)
+
+![data-honey](https://user-images.githubusercontent.com/113374279/224197083-e3cb79d7-8479-4c99-b1d1-87fda6243e71.png)
+
+
+
+
 
 ## AWS XRAY
 
