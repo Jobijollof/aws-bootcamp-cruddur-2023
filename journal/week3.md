@@ -22,12 +22,21 @@ We are usng Amazon Cognito for our Decentralized Authentication.
 
 ![cognito-home](https://user-images.githubusercontent.com/113374279/224384810-0f6ba21e-dcc9-48ee-ad4e-547436b4d995.png)
 
-- Click on the three vertical lines on the top left corner of the page(Andrew calls them hramburgers 🤣)
+- Click on the three vertical lines on the top left corner of the page(Andrew calls them hamburgers 🤣)
 
 ![hamburger](https://user-images.githubusercontent.com/113374279/224385532-295080c6-a435-4504-9bf1-f1ce038051d0.png)
 
 - Click on `User Pools`
 
 ![user-pool](https://user-images.githubusercontent.com/113374279/224386285-b2c9c545-9a34-4252-a9f0-b8f765f9b70f.png)
+
+- Edit `configure sign-in experience`
+
+![user-name](https://user-images.githubusercontent.com/113374279/224389873-c94a3bd0-4a34-4a25-a009-4396d12253f0.png)
+
+-  Edit `Configure security requirements`
+
+
+
 
 
