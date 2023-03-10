@@ -275,9 +275,11 @@ span.set_attribute("app.result_length", len(results))
 
 
 
-
-
 ## AWS XRAY
+
+- Updated `gitpod.yml` file, to automate `npm i`
+
+- Go to  [AWS SDK](https://github.com/aws/aws-xray-sdk-python) for python instructions
 
 - Change directory to `frontend-react-js`
 
@@ -307,6 +309,8 @@ xray_recorder.configure(service='backend-flask', dynamic_naming=xray_url)
 XRayMiddleware(app, xray_recorder)
 
 ```
+![apppy](https://user-images.githubusercontent.com/113374279/224198139-731c61f0-32ce-45a6-a890-f11d3e83ecc6.png)
+
 
 ### Setup AWS X-RAY Resources
 
@@ -336,6 +340,7 @@ XRayMiddleware(app, xray_recorder)
 
 - Create an Xray group
 
+
 Run the following on the terminal
 
 ```
@@ -345,6 +350,10 @@ aws xray create-group \
    --filter-expression "service(\"backend-flask\")"
 
 ```
+![create-group](https://user-images.githubusercontent.com/113374279/224198740-5e06f4cf-1ecd-4e4d-a04f-038a021f353a.png)
+
+
+![aws-create-group](https://user-images.githubusercontent.com/113374279/224199091-15e9cbc8-fcc6-40ba-9c31-9984f94c07c1.png)
 
 
 - Create a sampling rule
@@ -354,7 +363,14 @@ aws xray create-sampling-rule --cli-input-json file://aws/json/xray.json
 
 ```
 
--AWS Xray Daemon
+![after-group](https://user-images.githubusercontent.com/113374279/224199045-2162b3dd-c5db-494e-b4ee-4c2aa166e244.png)
+
+
+![sampling-rule](https://user-images.githubusercontent.com/113374279/224199408-19bd2e4a-b5b1-43e3-ad94-38b975b82bde.png)
+
+
+
+### AWS Xray Daemon
 
 Paste this into the `docker-compose.yml` file
 
@@ -370,7 +386,11 @@ xray-daemon:
       - 2000:2000/udp
 
 ```
-Add these two environment variables to the `backend-flask` section of my `docker-compose.yml` file.
+
+![x-ray daemon](https://user-images.githubusercontent.com/113374279/224199876-d82e389a-039d-4879-8216-b452197c54ab.png)
+
+
+- Add these two environment variables to the `backend-flask` section of  `docker-compose.yml` file.
 
 ```
 AWS_XRAY_URL: "*4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}*"
@@ -381,7 +401,18 @@ AWS_XRAY_DAEMON_ADDRESS: "xray-daemon:2000"
 - Run `docker compose up`
 
 
-- Hit any api to get data in AWS/Xray/query
+- Hit backend api to get data in AWS/Xray/query
+
+![trace](https://user-images.githubusercontent.com/113374279/224200561-e5303e3f-deab-4c00-8455-34498c545ca0.png)
+
+
+![trace2](https://user-images.githubusercontent.com/113374279/224200791-b1c87b53-afec-4dc1-8ff8-c62ff14b5cc0.png)
+
+
+![segmnts](https://user-images.githubusercontent.com/113374279/224200949-55e8320f-10c1-41a5-8aa1-59dc3cab3425.png)
+
+
+![segments2](https://user-images.githubusercontent.com/113374279/224200988-ec76c187-c060-4ad1-89b7-b1b2f89887c3.png)
 
 
 ### Rollbar
@@ -396,13 +427,23 @@ AWS_XRAY_DAEMON_ADDRESS: "xray-daemon:2000"
 
 `rollbar`
 
+
+![blinker](https://user-images.githubusercontent.com/113374279/224201466-805afc80-7485-4b95-856f-bbf30fd85db4.png)
+
+
 - Change directory to 'backend-flask' and Run:
 
 `pip install -r requirements.txt`
 
-- Copy access token  from rollbar and save it as an env var .
+
+- Copy access token  from rollbar and save it as an env var 
+
+
+![rollbar-token](https://user-images.githubusercontent.com/113374279/224201839-fe110bc4-c947-47c9-a6ab-702bf2766208.png)
+
 
 - Add the following commands from [rollbar](https://app.rollbar.com/a/jobinaibegbulem) to  `app.py` file.
+
 
 ```
 import os
@@ -432,6 +473,9 @@ def init_rollbar():
 
 ```
 
+- Add a test endpoint
+
+
 ```
 @app.route('/rollbar/test')
 def rollbar_test():
@@ -440,6 +484,29 @@ def rollbar_test():
 
 ```
 
+Set ROLLBAR_ACCESS_TOKEN, in docker-compose file.
+
+`ROLLBAR_ACCESS_TOKEN: "${ROLLBAR_ACCESS_TOKEN}"`
+
+![access-token](https://user-images.githubusercontent.com/113374279/224202913-73d0634e-4007-4944-ab7b-23a406163f0f.png)
+
+
 `docker compose up`
 
+- Hit the backend api
+
 - Test Rollbar endpoint
+
+![rollbar-logs](https://user-images.githubusercontent.com/113374279/224203448-d9e4b82a-89bf-4561-8728-42ffbd5466f7.png)
+
+
+![hello world](https://user-images.githubusercontent.com/113374279/224203052-e359ccf2-7f62-40a4-804d-0e3021c193e8.png)
+
+
+![view item](https://user-images.githubusercontent.com/113374279/224203194-a24d1c27-4255-48f8-b7d8-9fa51dd5ea64.png)
+
+
+
+
+
+
