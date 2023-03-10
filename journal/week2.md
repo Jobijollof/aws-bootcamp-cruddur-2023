@@ -387,7 +387,9 @@ xray-daemon:
 
 ```
 
-![x-ray daemon](https://user-images.githubusercontent.com/113374279/224199876-d82e389a-039d-4879-8216-b452197c54ab.png)
+![x-ray daemon](https://user-images.githubusercontent.com/113374279/224205888-6a336b8a-b2c5-414f-a075-7b801e1cce1e.png)
+
+
 
 
 - Add these two environment variables to the `backend-flask` section of  `docker-compose.yml` file.
@@ -502,8 +504,24 @@ Set ROLLBAR_ACCESS_TOKEN, in docker-compose file.
 
 ![hello world](https://user-images.githubusercontent.com/113374279/224203052-e359ccf2-7f62-40a4-804d-0e3021c193e8.png)
 
+- Go back to rollbar
+
+- Click on flask/view item
 
 ![view item](https://user-images.githubusercontent.com/113374279/224203194-a24d1c27-4255-48f8-b7d8-9fa51dd5ea64.png)
+
+![end-rollbar](https://user-images.githubusercontent.com/113374279/224204212-a1c805ff-2b88-4931-bc5c-b662dbaaf8c0.png)
+
+- Delibrately deleted some part of the code to create an error. To see if errors will be logged as well.
+
+
+![error-rollbar](https://user-images.githubusercontent.com/113374279/224204497-6571e29e-716a-4f43-b0f0-7e17e6b62fe5.png)
+
+
+![error2-rollbar](https://user-images.githubusercontent.com/113374279/224204556-4b5d9a17-f87e-4a31-aa45-db1a7ef74972.png)
+
+
+
 
 
 
