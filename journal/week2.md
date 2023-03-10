@@ -1,3 +1,6 @@
+
+![bootcamp-logo](https://user-images.githubusercontent.com/113374279/224375158-ca3290fa-6f24-43ef-9d06-0ce08295f2e0.png)
+
 # Week 2 — Distributed Tracing
 
 ## Instructor:
