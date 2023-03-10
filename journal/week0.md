@@ -1,3 +1,7 @@
+
+![bootcamp-logo](https://user-images.githubusercontent.com/113374279/224374564-6fbf7da3-4aa4-421e-a805-4a884ec07660.png)
+
+
 # Week 0 — Billing and Architecture
 
 ### Overview of the boot camp:
