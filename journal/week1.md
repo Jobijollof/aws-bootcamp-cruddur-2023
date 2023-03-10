@@ -1,4 +1,6 @@
 
+![bootcamp-logo](https://user-images.githubusercontent.com/113374279/224374845-442884c4-4879-48f8-8d1c-80727fca5445.png)
+
 # Week 1 — App Containerization
 
 Guest Instructors:
