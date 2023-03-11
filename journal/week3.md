@@ -1,3 +1,4 @@
+![password-policy](https://user-images.githubusercontent.com/113374279/224467518-c29cb57b-762d-416f-8fa3-673d0b76d9b2.png)
 
 ![bootcamp-logo](https://user-images.githubusercontent.com/113374279/224373745-c389f866-e46f-440c-a518-841c0f0ad94a.png)
 
@@ -35,6 +36,12 @@ We are usng Amazon Cognito for our Decentralized Authentication.
 ![user-name](https://user-images.githubusercontent.com/113374279/224389873-c94a3bd0-4a34-4a25-a009-4396d12253f0.png)
 
 -  Edit `Configure security requirements`
+
+![password-policy](https://user-images.githubusercontent.com/113374279/224467526-6710f6a7-bc2b-40e4-851e-fb5aa9497216.png)
+
+![mfa](https://user-images.githubusercontent.com/113374279/224467562-35ddfb25-4aa5-46b4-892a-20f185c7d61f.png)
+
+
 
 
 
