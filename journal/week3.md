@@ -52,6 +52,15 @@ We are usng Amazon Cognito for our Decentralized Authentication.
 
 ![required-attributes](https://user-images.githubusercontent.com/113374279/224468447-ffb3ab16-3368-47fa-8743-cacfd0748843.png)
 
+- Click on `next`
+
+- Edit Configure Message delivery`
+
+![configure-message](https://user-images.githubusercontent.com/113374279/224476292-d5ce3436-c81f-4b92-9507-6769aaa0b7d3.png)
+
+- Click on next
+
+
 
 
 
