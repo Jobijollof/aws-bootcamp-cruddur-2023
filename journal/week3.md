@@ -13,7 +13,7 @@ Instructor for the week:
 
 Andrew Brown
 
-We are usng Amazon Cognito for our Decentralized Authentication.
+We are using Amazon Cognito for our Decentralized Authentication.
 
 ### Implementing Decentralized Authentication using Amazon Cognito
 
@@ -23,7 +23,7 @@ We are usng Amazon Cognito for our Decentralized Authentication.
 
 ![cognito-home](https://user-images.githubusercontent.com/113374279/224384810-0f6ba21e-dcc9-48ee-ad4e-547436b4d995.png)
 
-- Click on the three vertical lines on the top left corner of the page(Andrew calls them hamburgers 🤣)
+- Click on the three horizontal lines on the top left corner of the page(Andrew calls them hamburgers 🤣)
 
 ![hamburger](https://user-images.githubusercontent.com/113374279/224385532-295080c6-a435-4504-9bf1-f1ce038051d0.png)
 
@@ -48,7 +48,9 @@ We are usng Amazon Cognito for our Decentralized Authentication.
 
 ![configure-signup](https://user-images.githubusercontent.com/113374279/224468282-4facc421-710c-4e62-8e4c-dfa91e90efba.png)
 
+
 ![atttribute-veri](https://user-images.githubusercontent.com/113374279/224468433-feb710a2-cbbd-41ab-bec4-0f42763f173f.png)
+
 
 ![required-attributes](https://user-images.githubusercontent.com/113374279/224468447-ffb3ab16-3368-47fa-8743-cacfd0748843.png)
 
@@ -62,10 +64,20 @@ We are usng Amazon Cognito for our Decentralized Authentication.
 
 - Edit `Integrate your app`
 
+
 ![integrate-app](https://user-images.githubusercontent.com/113374279/224596941-5d354bb3-0d4f-4ce9-93a9-f28346b9b3c0.png)
 
 
 ![initial-app](https://user-images.githubusercontent.com/113374279/224596974-543df972-7de9-49f9-be5d-739e33126a97.png)
+
+- Click on `next`
+
+-   `Review and Create`
+
+After reviewing click on `create user pool`
+
+![sucessful](https://user-images.githubusercontent.com/113374279/224598278-556dc050-3a00-4b4e-b026-7523e12b8c98.png)
+
 
 
 
