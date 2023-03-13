@@ -60,6 +60,13 @@ We are usng Amazon Cognito for our Decentralized Authentication.
 
 - Click on next
 
+- Edit `Integrate your app`
+
+![integrate-app](https://user-images.githubusercontent.com/113374279/224596941-5d354bb3-0d4f-4ce9-93a9-f28346b9b3c0.png)
+
+
+![initial-app](https://user-images.githubusercontent.com/113374279/224596974-543df972-7de9-49f9-be5d-739e33126a97.png)
+
 
 
 
