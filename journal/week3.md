@@ -13,6 +13,8 @@ Instructor for the week:
 
 Andrew Brown
 
+[Instuctional-video](https://www.youtube.com/live/9obl7rVgzJw?feature=share)
+
 We are using Amazon Cognito for our Decentralized Authentication.
 
 ### Implementing Decentralized Authentication using Amazon Cognito
