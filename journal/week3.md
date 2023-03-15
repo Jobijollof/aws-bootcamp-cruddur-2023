@@ -144,6 +144,9 @@ REACT_APP_CLIENT_ID: "6emm8hogul9h9jgrrdlsj2t0k4"
 ![app-integration](https://user-images.githubusercontent.com/113374279/225461627-1c02242c-df96-4d64-a0a2-61fa79e8a20b.png)
 
 
+- Scroll down to `App clients and analytics`
+
+
 ![client-id](https://user-images.githubusercontent.com/113374279/225461554-b33a4c05-6916-40d8-b2d9-f5bc31304e39.png)
 
 
@@ -153,11 +156,64 @@ REACT_APP_CLIENT_ID: "6emm8hogul9h9jgrrdlsj2t0k4"
 ![docker-compose](https://user-images.githubusercontent.com/113374279/225458578-2d30c6cd-e3b4-4ffe-9460-f77bafce9846.png)
 
 
+### Conditionally show components on the metrics of being logged in or out 
+
+- Start by editing `HomeFeedPage`
+
+- Add the import statement `import { Auth } from 'aws-amplify';` into the `HomeFeedPage.js` file.
+
+- Delete the following code 
+
+![cookiescheckauth-homefeed](https://user-images.githubusercontent.com/113374279/225464761-8b72b215-8cc8-4c5c-84bf-72e82e0e66b3.png)
+
+- Add this:
+
+```
+// check if we are authenticated
+const checkAuth = async () => {
+  Auth.currentAuthenticatedUser({
+    // Optional, By default is false. 
+    // If set to true, this call will send a 
+    // request to Cognito to get the latest user data
+    bypassCache: false 
+  })
+  .then((user) => {
+    console.log('user',user);
+    return Auth.currentAuthenticatedUser()
+  }).then((cognito_user) => {
+      setUser({
+        display_name: cognito_user.attributes.name,
+        handle: cognito_user.attributes.preferred_username
+      })
+  })
+  .catch((err) => console.log(err));
+};
+
+```
+
+![homefeed-correct](https://user-images.githubusercontent.com/113374279/225466095-780cfbd9-c113-4f2d-a44d-494e5c452954.png)
+
+
+- Edit/Update `ProfileInfo.js`
+
+- Add import statement `import { Auth } from 'aws-amplify';`
+
+- Remove the old code
+
+![cookies-profileinfo](https://user-images.githubusercontent.com/113374279/225466977-ca0516c8-ff3f-4237-b439-7b8b480fba00.png)
+
+- Add this one
+
+![newcode-profilejs](https://user-images.githubusercontent.com/113374279/225466861-0e0b3b49-a7c5-4ff2-8acd-872e0006d13d.png)
 
 
 
 
-App clients and analytics
+
+
+
+
+
 
 
 
