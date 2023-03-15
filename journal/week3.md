@@ -60,7 +60,7 @@ A  `Cognito user pool` is a user directory in Amazon Cognito. With a user pool, 
 
 - Click on `next`
 
-- Edit Configure Message delivery`
+- Edit `Configure Message delivery`
 
 ![configure-message](https://user-images.githubusercontent.com/113374279/224476292-d5ce3436-c81f-4b92-9507-6769aaa0b7d3.png)
 
@@ -92,6 +92,40 @@ After reviewing click on `create user pool`
 Check  `package.json` file to be sure it was added to the package.
 
 ![amplify-package](https://user-images.githubusercontent.com/113374279/225452221-1e0e94ea-8e32-425c-9964-5463e6b64c2f.png)
+
+### Configure Amplify
+
+- Add `import { Amplify } from 'aws-amplify';`  to  `App.js` file
+
+
+![ampliy-appjs](https://user-images.githubusercontent.com/113374279/225455578-1442f195-b1fc-4b69-a58f-45eca8840c94.png)
+
+
+- Add the following after the import statement
+
+
+```
+Amplify.configure({
+  "AWS_PROJECT_REGION": process.env.REACT_APP_AWS_PROJECT_REGION,
+  "aws_cognito_region": process.env.REACT_APP_AWS_COGNITO_REGION,
+  "aws_user_pools_id": process.env.REACT_APP_AWS_USER_POOLS_ID,
+  "aws_user_pools_web_client_id": process.env.REACT_APP_CLIENT_ID,
+  "oauth": {},
+  Auth: {
+    // We are not using an Identity Pool
+    // identityPoolId: process.env.REACT_APP_IDENTITY_POOL_ID, // REQUIRED - Amazon Cognito Identity Pool ID
+    region: process.env.REACT_APP_AWS_PROJECT_REGION,           // REQUIRED - Amazon Cognito Region
+    userPoolId: process.env.REACT_APP_AWS_USER_POOLS_ID,         // OPTIONAL - Amazon Cognito User Pool ID
+    userPoolWebClientId: process.env.REACT_APP_CLIENT_ID,   // OPTIONAL - Amazon Cognito Web Client ID (26-char alphanumeric string)
+  }
+});
+
+```
+
+![appjs](https://user-images.githubusercontent.com/113374279/225455745-8ee4b69b-93d8-4980-b0a9-88ba52f9f158.png)
+
+
+
 
 
 
