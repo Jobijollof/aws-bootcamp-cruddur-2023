@@ -5,9 +5,9 @@
 
 # Week 3 — Decentralized Authentication
 
-It is week 4 💃🏽💃🏽💃🏽💃 techically, week 3. The bootcamp has tested everything in me but i am still going so 💪💪💪.
+It is week 4 💃🏽💃🏽💃🏽💃 techically, week 3. Despite feeling fatigued, I'm showing resilience and perseverance 💪💪💪.
 
-I usually start with my own little research on the topic of the week. For this week i found an article written by Andrew [freecodecamp](https://www.freecodecamp.org/news/how-to-run-your-own-decentralized-authentication-service-using-authn/) Thanks for all you do. You are trully a hero.
+I usually start with my own little research on the topic of the week. For this week i found an article written by Andrew [freecodecamp](https://www.freecodecamp.org/news/how-to-run-your-own-decentralized-authentication-service-using-authn/). Thanks for all you do, you are trully a hero.
 
 Instructor for the week: 
 
@@ -125,10 +125,39 @@ Amplify.configure({
 ![appjs](https://user-images.githubusercontent.com/113374279/225455745-8ee4b69b-93d8-4980-b0a9-88ba52f9f158.png)
 
 
+- Edit the `docker-compose.yml` file adding the following values:
+
+```
+REACT_APP_AWS_PROJECT_REGION: "${AWS_DEFAULT_REGION}"
+REACT_APP_AWS_COGNITO_REGION: "${AWS_DEFAULT_REGION}"
+REACT_APP_AWS_USER_POOLS_ID:  "us-east-1_FQorSgYUt"
+REACT_APP_CLIENT_ID: "6emm8hogul9h9jgrrdlsj2t0k4"
+
+```
+
+- User pool id and client id can be found on the user pool section on AWS
+
+![user-poolid](https://user-images.githubusercontent.com/113374279/225461345-d3d6d9f8-8513-47d5-b445-11d17a311bbe.png)
+
+- To get Client id,click into the user pool, click on `app integration`
+
+![app-integration](https://user-images.githubusercontent.com/113374279/225461627-1c02242c-df96-4d64-a0a2-61fa79e8a20b.png)
+
+
+![client-id](https://user-images.githubusercontent.com/113374279/225461554-b33a4c05-6916-40d8-b2d9-f5bc31304e39.png)
+
+
+- ids are not sensitive hence no need to protect them
+
+
+![docker-compose](https://user-images.githubusercontent.com/113374279/225458578-2d30c6cd-e3b4-4ffe-9460-f77bafce9846.png)
 
 
 
 
+
+
+App clients and analytics
 
 
 
