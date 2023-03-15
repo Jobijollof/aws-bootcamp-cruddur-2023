@@ -13,7 +13,7 @@ Instructor for the week:
 
 Andrew Brown
 
-[Instuctional-video](https://www.youtube.com/live/9obl7rVgzJw?feature=share)
+[Instructional-video](https://www.youtube.com/live/9obl7rVgzJw?feature=share)
 
 We are using Amazon Cognito for our Decentralized Authentication.
 
@@ -32,6 +32,8 @@ We are using Amazon Cognito for our Decentralized Authentication.
 - Click on `User Pools`
 
 ![user-pool](https://user-images.githubusercontent.com/113374279/224386285-b2c9c545-9a34-4252-a9f0-b8f765f9b70f.png)
+
+A  `Cognito user pool` is a user directory in Amazon Cognito. With a user pool, your users can sign in to your web or mobile app through Amazon Cognito. Your users can also sign in through social identity providers like Google, Facebook, Amazon, or Apple, this is the case for `Federated Identity providers` 
 
 - Edit `configure sign-in experience`
 
@@ -79,6 +81,17 @@ We are using Amazon Cognito for our Decentralized Authentication.
 After reviewing click on `create user pool`
 
 ![sucessful](https://user-images.githubusercontent.com/113374279/224598278-556dc050-3a00-4b4e-b026-7523e12b8c98.png)
+
+
+### Install AWS Amplify
+
+- Change directory to the frontend and run: 
+
+`npm i aws-amplify --save` . The `--save` adds it to the package.json file.
+
+Check  `package.json` file to be sure it was added to the package.
+
+![amplify-package](https://user-images.githubusercontent.com/113374279/225452221-1e0e94ea-8e32-425c-9964-5463e6b64c2f.png)
 
 
 
