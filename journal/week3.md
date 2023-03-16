@@ -318,8 +318,111 @@ aws cognito-idp admin-set-user-password \
 - Sign out. Delete created user because we are about to create the signup function next, in order to add a user with the signup button.
 
 
+### Signup Page
+
+- Editing `SignupPage.js` file.
+
+- Replace the import cookie line with `import { Auth } from 'aws-amplify';` just  like the signin page.
+
+- Replace this code 
 
 
+![signup-oldcode](https://user-images.githubusercontent.com/113374279/225593362-773b82a4-1dab-4cb0-89aa-e69f07b0fd80.png)
+
+
+- With
+
+```
+const onsubmit = async (event) => {
+  event.preventDefault();
+  setErrors('')
+  try {
+    const { user } = await Auth.signUp({
+      username: email,
+      password: password,
+      attributes: {
+        name: name,
+        email: email,
+        preferred_username: username,
+      },
+      autoSignIn: { // optional - enables auto sign in after user is confirmed
+        enabled: true,
+      }
+    });
+    console.log(user);
+    window.location.href = `/confirm?email=${email}`
+  } catch (error) {
+      console.log(error);
+      setErrors(error.message)
+  }
+  return false
+}
+
+```
+
+### Confirmation Page
+
+- In `ConfirmationPage.js` file,  replace the import cookie line with `import { Auth } from 'aws-amplify';`
+
+- Replace the resend code with the lines of code below
+
+
+```
+const resend_code = async (event) => {
+  setErrors('')
+  try {
+    await Auth.resendSignUp(email);
+    console.log('code resent successfully');
+    setCodeSent(true)
+  } catch (err) {
+    // does not return a code
+    // does cognito always return english
+    // for this to be an okay match?
+    console.log(err)
+    if (err.message == 'Username cannot be empty'){
+      setErrors("You need to provide an email in order to send Resend Activiation Code")   
+    } else if (err.message == "Username/client id combination not found."){
+      setErrors("Email is invalid or cannot be found.")   
+    }
+  }
+}
+
+```
+
+- Replace the onsubmit code with the lines of code below:
+
+
+```
+const onsubmit = async (event) => {
+  event.preventDefault();
+  setErrors('')
+  try {
+    await Auth.confirmSignUp(email, code);
+    window.location.href = "/"
+  } catch (error) {
+    setErrors(error.message)
+  }
+  return false
+}
+
+```
+- Save and refresh
+
+![error-message](https://user-images.githubusercontent.com/113374279/225599750-92cac9a4-b3c4-4bea-8184-618a81132774.png)
+
+- This is the error that will be encountered.
+
+- The error was from the initial user pool created.  "email" and "username"  was used initially for for signup options, as opposed to just email.  Delete the old  user pool and create another one. Make provision  to add the "preferred username" attribute in this one.
+
+- Update  user pool and client ID env var, `docker compose up` and refreshe the web page
+  
+![confirm-email](https://user-images.githubusercontent.com/113374279/225601431-fcedd6be-a2fb-443d-87fe-d323d365f69f.png)
+
+![email-vericode](https://user-images.githubusercontent.com/113374279/225601642-ebcb80ad-eea1-44f1-8d8b-2f36b1a009ea.png)
+
+- Sign in shoud work at this point, also user should have been created.
+
+![user-created](https://user-images.githubusercontent.com/113374279/225602390-ff8df166-8cf1-4453-bccd-7125cd805eb2.png)
 
 
 
