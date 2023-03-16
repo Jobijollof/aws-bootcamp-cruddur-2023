@@ -293,6 +293,38 @@ aws cognito-idp admin-set-user-password \
 
 ![cooodeee](https://user-images.githubusercontent.com/113374279/225583147-41f93eaf-befa-418b-87b0-328f5ba157eb.png)
 
+- Test frontend URL again
+
+![signin-final](https://user-images.githubusercontent.com/113374279/225583922-219586bd-3e35-477c-92b8-1dd4228b1000.png)
+
+- Click on signout. At this point we can sign out successfully.
+
+- Also at this point, the username section said "@handle" instead of the actual users handle because  "prefered username" want selected     as an attribute. We would fix that.
+
+- Go back to created user created user, set a name and set additional attribute and a value.
+
+- Edit user attribute
+
+![edit-userattributes](https://user-images.githubusercontent.com/113374279/225587764-414bb342-4e23-4a58-a4b5-f4e4a1b16cf1.png)
+
+
+- Edit `Optional attributes` and choose `preffered namme`
+
+- `Save Changes`
+
+
+![jollof](https://user-images.githubusercontent.com/113374279/225590237-4b232b05-f505-4a52-8dc7-616d9906c597.png)
+
+- Sign out. Delete created user because we are about to create the signup function next, in order to add a user with the signup button.
+
+
+
+
+
+
+
+
+
 
 
 
