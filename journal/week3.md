@@ -481,6 +481,8 @@ const onsubmit_send_code = async (event) => {
 
 ![password-reset](https://user-images.githubusercontent.com/113374279/225608475-5f3fff79-120e-4318-8714-7e361e584d2f.png)
 
+- Change password and log in with the new password.
+
 
 
 
@@ -493,9 +495,7 @@ const onsubmit_send_code = async (event) => {
   
   
   
-  
-  
-  ![recovery-code](https://user-images.githubusercontent.com/113374279/225603949-95a3c81f-5c7e-4031-b1ad-b79f7828b007.png)
+
 
 
 
