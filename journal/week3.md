@@ -249,9 +249,31 @@ const onsubmit = async (event) => {
 ![signin-cookiesremoveunsumit](https://user-images.githubusercontent.com/113374279/225572838-545f42ba-bb31-44da-ac60-cfbb90e0da82.png)
 
 
-- replace
+- Replace with:
 
 ![onsumit-correct](https://user-images.githubusercontent.com/113374279/225574391-a7977396-1ef2-4c10-a299-5ddb7a073509.png)
+
+- Save and go back to the frontend URL, try to sign in, and this should be the output  
+
+![viola2](https://user-images.githubusercontent.com/113374279/225576526-dbae1240-fd24-4c84-9b2d-5121a76b2283.png)
+
+
+- Create a user. Go to user-pool on AWS to add a user
+
+
+![create-user1](https://user-images.githubusercontent.com/113374279/225578393-45247dd2-6122-464e-972f-9cb7eee16f25.png)
+
+
+![create-user2](https://user-images.githubusercontent.com/113374279/225578561-df52e3bf-32ed-4ee9-9a7e-056c2955b034.png)
+
+- Signing in with the created user will create this error.
+
+![error-signin](https://user-images.githubusercontent.com/113374279/225579152-93551663-650c-426c-bf0b-afa19351b7ce.png)
+
+
+
+
+
 
 
 
