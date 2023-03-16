@@ -426,6 +426,80 @@ const onsubmit = async (event) => {
 
 
 
+### Recovery Page
+
+- Create a recovery page.  This feature is for users who forget their password.
+
+- Edit `RecoverPage.js` file by adding the `import { Auth } from 'aws-amplify';` import statement.
+
+- Add the "send code" and "confirm code".
+
+- Send code
+
+```
+const onsubmit_send_code = async (event) => {
+    event.preventDefault();
+    setErrors('')
+    Auth.forgotPassword(username)
+    .then((data) => setFormState('confirm_code') )
+    .catch((err) => setErrors(err.message) );
+    return false
+  }
+  
+```
+
+- Confirm code
+
+```
+  const onsubmit_confirm_code = async (event) => {
+    event.preventDefault();
+    setErrors('')
+    if (password == passwordAgain){
+      Auth.forgotPasswordSubmit(username, code, password)
+      .then((data) => setFormState('success'))
+      .catch((err) => setErrors(err.message) );
+    } else {
+      setErrors('Passwords do not match')
+    }
+    return false
+  }
+
+```
+
+![send-code](https://user-images.githubusercontent.com/113374279/225607411-f25c6400-e85a-4091-9534-79c54a99cc29.png)
+
+- Save and commit  changes.
+
+- Go back to the frontend page, and click on login
+
+- Click on forgot password
+
+- An email for password recovery should drop in your mail box.
+
+![recovery-code](https://user-images.githubusercontent.com/113374279/225608603-71d94b02-d858-46c7-845b-8aee277ff515.png)
+
+
+![password-reset](https://user-images.githubusercontent.com/113374279/225608475-5f3fff79-120e-4318-8714-7e361e584d2f.png)
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  ![recovery-code](https://user-images.githubusercontent.com/113374279/225603949-95a3c81f-5c7e-4031-b1ad-b79f7828b007.png)
+
+
+
+
 
 
 
