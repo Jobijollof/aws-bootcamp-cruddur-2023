@@ -210,7 +210,48 @@ const checkAuth = async () => {
 
 ![viola!](https://user-images.githubusercontent.com/113374279/225468190-2eaecb36-dd47-4f6a-bad1-beba9d3c5cfe.png)
 
+
 ### Signin Page:
+
+-  In `SigninPage.js` replace the import cookie line with 
+
+`import { Auth } from 'aws-amplify';`
+
+![newcode-signinpagejs](https://user-images.githubusercontent.com/113374279/225574616-02cffdef-657f-4c5b-8b70-62bf5fb02258.png)
+
+
+- Replace the onsubmit code with the one below
+
+
+```
+const onsubmit = async (event) => {
+  setErrors('')
+  event.preventDefault();
+  try {
+    Auth.signIn(email, password)
+      .then(user => {
+        localStorage.setItem("access_token", user.signInUserSession.accessToken.jwtToken)
+        window.location.href = "/"
+      })
+      .catch(err => { console.log('Error!', err) });
+  } catch (error) {
+    if (error.code == 'UserNotConfirmedException') {
+      window.location.href = "/confirm"
+    }
+    setErrors(error.message)
+  }
+  return false
+}
+
+```
+- Old code remove
+
+![signin-cookiesremoveunsumit](https://user-images.githubusercontent.com/113374279/225572838-545f42ba-bb31-44da-ac60-cfbb90e0da82.png)
+
+
+- replace
+
+![onsumit-correct](https://user-images.githubusercontent.com/113374279/225574391-a7977396-1ef2-4c10-a299-5ddb7a073509.png)
 
 
 
