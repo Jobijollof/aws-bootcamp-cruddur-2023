@@ -266,13 +266,32 @@ const onsubmit = async (event) => {
 
 ![create-user2](https://user-images.githubusercontent.com/113374279/225578561-df52e3bf-32ed-4ee9-9a7e-056c2955b034.png)
 
+
 - Signing in with the created user will create this error.
+
 
 ![error-signin](https://user-images.githubusercontent.com/113374279/225579152-93551663-650c-426c-bf0b-afa19351b7ce.png)
 
+- Fix
+
+This line of code caused the error, this is because the token hasn't been set yet. This issue will be fixed subsequently but there is a short cut or a quick fix so that testing can contiune.
+
+![local-storage](https://user-images.githubusercontent.com/113374279/225581838-be3774ba-f745-4f06-b300-aa9973464306.png)
 
 
+The fix was from [here](https://stackoverflow.com/questions/40287012/how-to-change-user-status-force-change-password)
 
+```
+aws cognito-idp admin-set-user-password \
+  --user-pool-id <your-user-pool-id> \
+  --username <username> \
+  --password <password> \
+  --permanent
+  
+```  
+- Executed like this:
+
+![cooodeee](https://user-images.githubusercontent.com/113374279/225583147-41f93eaf-befa-418b-87b0-328f5ba157eb.png)
 
 
 
