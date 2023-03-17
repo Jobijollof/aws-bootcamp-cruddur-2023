@@ -96,7 +96,7 @@ After reviewing click on `create user pool`
 
 - Change directory to the frontend and run: 
 
-`npm i aws-amplify --save` . The `--save` adds it to the package.json file.
+`npm i aws-amplify --save` . The `--save` adds it to the [package.json](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/frontend-react-js/package.json) file.
 
 Check  `package.json` file to be sure it was added to the package.
 
@@ -104,7 +104,7 @@ Check  `package.json` file to be sure it was added to the package.
 
 ### Configure Amplify
 
-- Add `import { Amplify } from 'aws-amplify';`  to  `App.js` file
+  - Add `import { Amplify } from 'aws-amplify';`  to  [App.js](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/frontend-react-js/src/App.js) file
 
 
 ![ampliy-appjs](https://user-images.githubusercontent.com/113374279/225455578-1442f195-b1fc-4b69-a58f-45eca8840c94.png)
