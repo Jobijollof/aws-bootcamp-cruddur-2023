@@ -13,7 +13,11 @@ Instructor for the week:
 
 Andrew Brown
 
-[Instructional-video](https://www.youtube.com/live/9obl7rVgzJw?feature=share)
+### Resources:
+
+[Instructional-video 1](https://www.youtube.com/live/9obl7rVgzJw?feature=share)
+
+[instructional-video 2] (
 
 We are using Amazon Cognito for our Decentralized Authentication.
 
@@ -484,16 +488,33 @@ const onsubmit_send_code = async (event) => {
 - Change password and log in with the new password.
 
 
-### Authorisation
+### Authenticating Server Side
 
-Homefeed.js
+- Add this code to the `Homefeed.js` file to pass along the access token
+
 ```
 headers: {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`
         },
         
 ```        
-Back end
+
+
+### Configure backend server
+
+- Add `Flask-AWSCognito` to the requirement.txt in the backend  
+
+- Change directory into the backend
+
+`cd backend-flask`
+
+- Then run:
+
+`pip installl-r requirements.txt`
+
+create a user either from the command line or from the aws cognito page ensure to put your a real gmail address and confirm the user
+
+In the app.py change the cors to this
 `app.py`
 
 import statements
