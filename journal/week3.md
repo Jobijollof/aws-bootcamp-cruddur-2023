@@ -484,6 +484,16 @@ const onsubmit_send_code = async (event) => {
 - Change password and log in with the new password.
 
 
+### Authorisation
+
+```
+headers: {
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`
+        },
+        
+```        
+
+
 
 
 
