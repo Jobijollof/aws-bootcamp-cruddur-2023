@@ -12,7 +12,7 @@ import ConfirmationPage from './pages/ConfirmationPage';
 import React from 'react';
 import { Amplify } from 'aws-amplify';
 
-
+import process from 'process';
 import {
   createBrowserRouter,
   RouterProvider
