@@ -129,7 +129,7 @@ Amplify.configure({
 ![appjs](https://user-images.githubusercontent.com/113374279/225455745-8ee4b69b-93d8-4980-b0a9-88ba52f9f158.png)
 
 
-- Edit the `docker-compose.yml` file adding the following values:
+- Edit the [docker-compose.yml](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/docker-compose.yml) file adding the following values:
 
 ```
 REACT_APP_AWS_PROJECT_REGION: "${AWS_DEFAULT_REGION}"
@@ -162,7 +162,7 @@ REACT_APP_CLIENT_ID: "6emm8hogul9h9jgrrdlsj2t0k4"
 
 ### Conditionally show components on the metrics of being logged in or out 
 
-- Start by editing `HomeFeedPage`
+- Start by editing [HomeFeedPage.js](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/frontend-react-js/src/pages/HomeFeedPage.js)
 
 - Add the import statement `import { Auth } from 'aws-amplify';` into the `HomeFeedPage.js` file.
 
@@ -217,7 +217,7 @@ const checkAuth = async () => {
 
 ### Signin Page:
 
--  In `SigninPage.js` replace the import cookie line with 
+-  In [SigninPage.js](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/frontend-react-js/src/pages/SigninPage.js) replace the import cookie line with 
 
 `import { Auth } from 'aws-amplify';`
 
@@ -324,7 +324,7 @@ aws cognito-idp admin-set-user-password \
 
 ### Signup Page
 
-- Editing `SignupPage.js` file.
+- Editing [SignupPage.js](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/frontend-react-js/src/pages/SignupPage.js) file.
 
 - Replace the import cookie line with `import { Auth } from 'aws-amplify';` just  like the signin page.
 
@@ -366,7 +366,7 @@ const onsubmit = async (event) => {
 
 ### Confirmation Page
 
-- In `ConfirmationPage.js` file,  replace the import cookie line with `import { Auth } from 'aws-amplify';`
+- In [ConfirmationPage.js](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/frontend-react-js/src/pages/ConfirmationPage.js) file,  replace the import cookie line with `import { Auth } from 'aws-amplify';`
 
 - Replace the resend code with the lines of code below
 
@@ -434,7 +434,7 @@ const onsubmit = async (event) => {
 
 - Create a recovery page.  This feature is for users who forget their password.
 
-- Edit `RecoverPage.js` file by adding the `import { Auth } from 'aws-amplify';` import statement.
+- Edit [RecoverPage.js](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/frontend-react-js/src/pages/RecoverPage.js) file by adding the `import { Auth } from 'aws-amplify';` import statement.
 
 - Add the "send code" and "confirm code".
 
@@ -490,7 +490,7 @@ const onsubmit_send_code = async (event) => {
 
 ### Authenticating Server Side
 
-- Add this code to the `Homefeed.js` file to pass along the access token
+- Add this code to the [Homefeed.js](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/frontend-react-js/src/pages/HomeFeedPage.js) file to pass along the access token
 
 ```
 headers: {
@@ -502,7 +502,7 @@ headers: {
 
 ### Configure backend server
 
-- Add `Flask-AWSCognito` to the requirement.txt in the backend  
+- Add `Flask-AWSCognito` to the [requirement.txt](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/backend-flask/requirements.txt) in the backend  
 
 - Change directory into the backend
 
