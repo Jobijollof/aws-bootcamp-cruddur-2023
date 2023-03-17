@@ -514,7 +514,7 @@ headers: {
 
 create a user either from the command line or from the aws cognito page ensure to put your a real gmail address and confirm the user
 
-In the app.py change the cors to this
+In the [app.py](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/backend-flask/app.py) change the cors to this
 
 ```
 cors = CORS(
