@@ -18,18 +18,18 @@ export default function SigninPage() {
     event.preventDefault();
     Auth.signIn(email, password)
     .then(user => {
+      console.log('user',user)
       localStorage.setItem("access_token", user.signInUserSession.accessToken.jwtToken)
       window.location.href = "/"
     })
-    .catch(error => {
+    .catch(error => { 
       if (error.code == 'UserNotConfirmedException') {
         window.location.href = "/confirm"
       }
-      setErrors(error.message) 
+      setErrors(error.message)
     });
     return false
   }
-
   
   const email_onchange = (event) => {
     setEmail(event.target.value);
