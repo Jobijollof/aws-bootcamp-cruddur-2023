@@ -15,9 +15,14 @@ Andrew Brown
 
 ### Resources:
 
-[Instructional-video 1](https://www.youtube.com/live/9obl7rVgzJw?feature=share)
+[Instructional-video 1](https://www.youtube.com/live/9obl7rVgzJw?feature=share) (Live stream)
 
-[instructional-video 2] (
+[Cognito Custom Pages](https://youtu.be/T4X4yIzejTc)
+
+[Exploring JWTS](https://youtu.be/nJjbI4BbasU)
+
+[JWT server side Verify](https://youtu.be/d079jccoG-M)
+
 
 We are using Amazon Cognito for our Decentralized Authentication.
 
