@@ -486,17 +486,66 @@ const onsubmit_send_code = async (event) => {
 
 ### Authorisation
 
+Homefeed.js
 ```
 headers: {
           Authorization: `Bearer ${localStorage.getItem("access_token")}`
         },
         
 ```        
+Back end
+`app.py`
+
+import statements
+
+`import sys`
 
 
+`from lib.cognito_jwt_token import CognitoJwtToken, extract_access_token, TokenVerifyError`
 
+```
+cognito_jwt_token = CognitoJwtToken(
+  user_pool_id=os.getenv("AWS_COGNITO_USER_POOL_ID"), 
+  user_pool_client_id=os.getenv("AWS_COGNITO_USER_POOL_CLIENT_ID"),
+  region=os.getenv("AWS_DEFAULT_REGION")
+)
+```
 
+- update Cors, replace the old code with this
 
+```
+cors = CORS(
+  app, 
+  resources={r"/api/*": {"origins": origins}},
+  headers=['Content-Type', 'Authorization'], 
+  expose_headers='Authorization',
+  methods="OPTIONS,GET,HEAD,POST"
+)
+
+```
+
+- Replace the code at api/home/activities with this
+
+```
+@app.route("/api/activities/home", methods=['GET'])
+@xray_recorder.capture('activities_home')
+def data_home():
+  access_token = extract_access_token(request.headers)
+  try:
+    claims = cognito_jwt_token.verify(access_token)
+    # authenicatied request
+    app.logger.debug("authenicated")
+    app.logger.debug(claims)
+    app.logger.debug(claims['username'])
+    data = HomeActivities.run(cognito_user_id=claims['username'])
+  except TokenVerifyError as e:
+    # unauthenicatied request
+    app.logger.debug(e)
+    app.logger.debug("unauthenicated")
+    data = HomeActivities.run()
+  return data, 200
+
+```
 
 
 
