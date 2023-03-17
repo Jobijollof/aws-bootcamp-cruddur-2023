@@ -515,9 +515,18 @@ headers: {
 create a user either from the command line or from the aws cognito page ensure to put your a real gmail address and confirm the user
 
 In the app.py change the cors to this
-`app.py`
 
-import statements
+```
+cors = CORS(
+  app, 
+  resources={r"/api/*": {"origins": origins}},
+  headers=['Content-Type', 'Authorization'], 
+  expose_headers='Authorization',
+  methods="OPTIONS,GET,HEAD,POST"
+)
+
+```
+- Import statements
 
 `import sys`
 
@@ -532,7 +541,7 @@ cognito_jwt_token = CognitoJwtToken(
 )
 ```
 
-- update Cors, replace the old code with this
+- update Cors, replace the old code with this:
 
 ```
 cors = CORS(
@@ -545,7 +554,7 @@ cors = CORS(
 
 ```
 
-- Replace the code at api/home/activities with this
+- Replace the code at api/home/activities with this:
 
 ```
 @app.route("/api/activities/home", methods=['GET'])
