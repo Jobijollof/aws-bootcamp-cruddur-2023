@@ -507,6 +507,10 @@ headers: {
 
 ### Configure backend server
 
+- Add these enviroment variables to the backend part of  `gitpod.yml` file
+
+![en-vars](https://user-images.githubusercontent.com/113374279/226095647-69b04dc4-9d35-4ff4-b884-a3e6a9ef6889.png)
+
 - Add `Flask-AWSCognito` to the [requirements.txt](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/backend-flask/requirements.txt) in the backend  
 
 - Change directory into the backend
@@ -520,6 +524,7 @@ headers: {
 
 In the [app.py](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/backend-flask/app.py) change the cors to this
 
+- Replace the old Cors code with this:
 
 ```
 cors = CORS(
@@ -548,19 +553,6 @@ cognito_jwt_token = CognitoJwtToken(
 )
 ```
 
-- Update Cors, replace the old code with this:
-
-
-```
-cors = CORS(
-  app, 
-  resources={r"/api/*": {"origins": origins}},
-  headers=['Content-Type', 'Authorization'], 
-  expose_headers='Authorization',
-  methods="OPTIONS,GET,HEAD,POST"
-)
-
-```
 
 - Replace the code at api/home/activities with this:
 
