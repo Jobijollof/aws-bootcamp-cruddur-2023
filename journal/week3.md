@@ -586,7 +586,7 @@ def data_home():
 
 ```
 
-- Creat a folder Lib and create a file in the folder named cognito_jwt_token.py add the following codes into the file
+-  In backkend-flask make a [Lib](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/tree/main/backend-flask/lib) folder.  Make a file in the folder and name it [cognito_jwt_token.py](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/backend-flask/lib/cognito_jwt_token.py) add the following codes into the file
 
 ```
 import time
