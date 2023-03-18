@@ -495,7 +495,7 @@ const onsubmit_send_code = async (event) => {
 
 ### Authenticating Server Side
 
-- Add this code to the [Homefeed.js](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/frontend-react-js/src/pages/HomeFeedPage.js) file to pass along the access token
+- Add this code to the [HomeFeed.js](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/frontend-react-js/src/pages/HomeFeedPage.js) file to pass along the access token
 
 ```
 headers: {
@@ -507,7 +507,7 @@ headers: {
 
 ### Configure backend server
 
-- Add `Flask-AWSCognito` to the [requirement.txt](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/backend-flask/requirements.txt) in the backend  
+- Add `Flask-AWSCognito` to the [requirements.txt](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/backend-flask/requirements.txt) in the backend  
 
 - Change directory into the backend
 
@@ -515,11 +515,11 @@ headers: {
 
 - Then run:
 
-`pip installl-r requirements.txt`
+`pip install -r requirements.txt`
 
-create a user either from the command line or from the aws cognito page ensure to put your a real gmail address and confirm the user
 
 In the [app.py](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/backend-flask/app.py) change the cors to this
+
 
 ```
 cors = CORS(
@@ -531,12 +531,14 @@ cors = CORS(
 )
 
 ```
+
 - Import statements
 
 `import sys`
 
 
 `from lib.cognito_jwt_token import CognitoJwtToken, extract_access_token, TokenVerifyError`
+
 
 ```
 cognito_jwt_token = CognitoJwtToken(
@@ -546,7 +548,8 @@ cognito_jwt_token = CognitoJwtToken(
 )
 ```
 
-- update Cors, replace the old code with this:
+- Update Cors, replace the old code with this:
+
 
 ```
 cors = CORS(
@@ -560,6 +563,7 @@ cors = CORS(
 ```
 
 - Replace the code at api/home/activities with this:
+
 
 ```
 @app.route("/api/activities/home", methods=['GET'])
@@ -702,7 +706,12 @@ class CognitoJwtToken:
 ```
 
 
-  
+- Make changes to [home_activities.py](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/backend-flask/services/home_activities.py) 
+
+- `docker compose up`
+
+![authenticated](https://user-images.githubusercontent.com/113374279/226087799-fbcc2439-e868-464c-83a9-78b6ab7b5f70.png)
+
   
   
   
