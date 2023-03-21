@@ -58,6 +58,19 @@ aws rds create-db-instance \
   
   ```
 
+This command should return back json
+
+![json1](https://user-images.githubusercontent.com/113374279/226708106-bd2c34e6-eb8a-4796-8aad-e7271132051a.png)
+
+
+Go to AWS RDS and check for database
+![database-created](https://user-images.githubusercontent.com/113374279/226709470-aefede8a-5b0d-44b3-95db-8a5c3775bb74.png)
+
+
+Click into database, and click on actions.  We want to shut down the database temporarily. This is beacause we dont need it now.
+![actions-database](https://user-images.githubusercontent.com/113374279/226709894-a98da60f-5063-4e59-8c42-b0add82c1196.png)
+
+
 
 
 
