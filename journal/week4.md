@@ -107,6 +107,10 @@ psql -Upostgres --host localhost
 
 ![list-database](https://user-images.githubusercontent.com/113374279/226714791-db982c17-11d3-40e7-bd20-6770787589bc.png)
 
+TO Create a Database
+
+`CREATE database cruddur;`
+
 
 
 
