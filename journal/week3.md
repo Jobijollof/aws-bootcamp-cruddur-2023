@@ -507,7 +507,7 @@ headers: {
 
 ### Configure backend server
 
-- Add these enviroment variables to the backend part of  `gitpod.yml` file
+- Add these enviroment variables to the backend part of  `dokercompose.yml` file
 
 ![en-vars](https://user-images.githubusercontent.com/113374279/226095647-69b04dc4-9d35-4ff4-b884-a3e6a9ef6889.png)
 
