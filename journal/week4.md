@@ -113,6 +113,26 @@ TO Create a Database
 
 - In `backend-flask` create a folder named `db`. In `db` folder create a file named `schema.sql`. Add the following into into the file.
 
+```
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+
+```
+
+`\q` to quit posgres
+
+- In backend-flask directory, run the script in `schema.sql` with 
+
+`psql cruddur < db/schema.sql -h localhost -U postgres` (This command takes all the content of db/schema.sql and puts it in cruddur)
+
+- Extension created. We have successfully run an external script
+
+![external- script](https://user-images.githubusercontent.com/113374279/226736022-84c95249-0a4c-4ab0-8c9b-23dac3e13a3c.png)
+
+
+
+
+
 
 
 
