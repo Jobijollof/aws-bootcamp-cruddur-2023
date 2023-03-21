@@ -31,7 +31,32 @@ Amazon Aurora PostgreSQL is a high-performance, fully-managed database service t
 
 To deploy PostgreSQL on AWS, users can choose between Amazon RDS for PostgreSQL or Amazon Aurora PostgreSQL, depending on their specific requirements. Both services offer various benefits and features that can help users to manage their PostgreSQL databases in the cloud effectively.
 
+## Provision RDS Instance
+On the Cli run run the following commands. Kindly note that for region, you have to specify the alphabet associated with the region.
+My region in this case is us-east-1a
 
+```
+aws rds create-db-instance \
+  --db-instance-identifier cruddur-db-instance \
+  --db-instance-class db.t3.micro \
+  --engine postgres \
+  --engine-version  14.6 \
+  --master-username cruddurroot \
+  --master-user-password <enter password min 8 characters> \
+  --allocated-storage 20 \
+  --availability-zone us-east-1a \
+  --backup-retention-period 0 \
+  --port 5432 \
+  --no-multi-az \
+  --db-name cruddur \
+  --storage-type gp2 \
+  --publicly-accessible \
+  --storage-encrypted \
+  --enable-performance-insights \
+  --performance-insights-retention-period 7 \
+  --no-deletion-protection
+  
+  ```
 
 
 
