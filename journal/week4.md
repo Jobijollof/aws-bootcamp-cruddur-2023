@@ -129,6 +129,21 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 ![external- script](https://user-images.githubusercontent.com/113374279/226736022-84c95249-0a4c-4ab0-8c9b-23dac3e13a3c.png)
 
+- Connection string to Posgres
+
+```
+psql postgresql://postgres:password@localhost:5432/cruddur
+```
+
+- Save connection strin as an enviroment variable
+
+```
+
+export CONNECTION_URL="postgresql://postgres:password@localhost:5432/cruddur"
+
+
+```
+
 
 
 
