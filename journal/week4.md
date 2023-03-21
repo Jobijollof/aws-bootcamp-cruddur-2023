@@ -67,8 +67,12 @@ Go to AWS RDS and check for database
 ![database-created](https://user-images.githubusercontent.com/113374279/226709470-aefede8a-5b0d-44b3-95db-8a5c3775bb74.png)
 
 
-Click into database, and click on actions.  We want to shut down the database temporarily. This is beacause we dont need it now.
+Click into database, and click on actions.  I am shutting it down temporarily. This is beacause i do not have immediate use for it. 
 ![actions-database](https://user-images.githubusercontent.com/113374279/226709894-a98da60f-5063-4e59-8c42-b0add82c1196.png)
+
+
+![stop-temp](https://user-images.githubusercontent.com/113374279/226710332-be4b35fc-b2f9-45df-b5e4-b40e64b14468.png)
+
 
 
 
