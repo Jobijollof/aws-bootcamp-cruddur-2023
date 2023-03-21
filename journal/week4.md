@@ -111,6 +111,10 @@ TO Create a Database
 
 `CREATE database cruddur;`
 
+- In `backend-flask` create a folder named `db`. In `db` folder create a file named `schema.sql`. Add the following into into the file.
+
+
+
 
 
 
