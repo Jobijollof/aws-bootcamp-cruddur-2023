@@ -73,6 +73,13 @@ Click into database, and click on actions.  I am shutting it down temporarily. T
 
 ![stop-temp](https://user-images.githubusercontent.com/113374279/226710332-be4b35fc-b2f9-45df-b5e4-b40e64b14468.png)
 
+To test our connection to postgres on the terminal
+
+```
+psql -Upostgres --host localhost
+
+```
+
 
 
 
