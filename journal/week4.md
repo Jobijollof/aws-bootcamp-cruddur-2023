@@ -321,6 +321,21 @@ This connects you automatically to the database.
 
 To check if tables were created run the `\dt` command to confirm the existence of my table
 
+![list-database](https://user-images.githubusercontent.com/113374279/226882539-1b81d2ce-9b6c-4f45-a11a-45e4bf176df7.png)
+
+
+- Create a file `bin/db-seed` [db-seed](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/backend-flask/bin/db-seed)
+
+- Run the script  `./bin/db-schema-load` and `./bin/db-seed`
+
+![the-end](https://user-images.githubusercontent.com/113374279/226884931-db5eb3c9-c49a-4538-9795-b971262e30fe.png)
+
+
+
+
+
+
+
 
 
 
