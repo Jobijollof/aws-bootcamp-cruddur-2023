@@ -241,7 +241,9 @@ psql $URL cruddur < $schema_path
 
 - Run the script with `./bin/db-schema-load`
 
-- [Colour Coding  Commands](https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux)
+- [Change the output Color of echo in Linux](https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux)
+
+I made some alterations to `db-drop`  `db-schema-load`
 
 
 - Add the following code into [db-connect](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/backend-flask/bin/db-connect)
