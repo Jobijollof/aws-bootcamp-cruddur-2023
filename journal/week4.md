@@ -237,16 +237,18 @@ fi
 
 psql $URL cruddur < $schema_path
 
+
 ```
 
 - Run the script with `./bin/db-schema-load`
 
 - [Change the output Color of echo in Linux](https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux)
 
-I made some alterations to `db-drop`  `db-schema-load`
+- Made colour alterations to `db-drop`  `db-schema-load`
 
 
 - Add the following code into [db-connect](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/backend-flask/bin/db-connect)
+
 
 ```
 
@@ -264,6 +266,52 @@ psql $URL
 
 ```
 
+### Creating Tables
+
+[Helpful document for creating Databases](https://www.postgresql.org/docs/current/sql-createtable.html)
+
+In `Db` folder create a file [schema.sql](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/backend-flask/db/schema.sql)
+
+- Add the following code into the newly created file
+
+```
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+---Forcefully drop the table if it exists--- 
+DROP TABLE IF EXISTS public.users;
+DROP TABLE IF EXISTS public.activities;
+
+CREATE TABLE public.users (
+  uuid UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  display_name text,
+  handle text,
+  cognito_user_id text,
+  created_at TIMESTAMP default current_timestamp NOT NULL
+);
+
+CREATE TABLE public.activities (
+  uuid UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  user_uuid UUID NOT NULL, 
+  message text NOT NULL,
+  replies_count integer DEFAULT 0,
+  reposts_count integer DEFAULT 0,
+  likes_count integer DEFAULT 0,
+  reply_to_activity_uuid integer,
+  expires_at TIMESTAMP,
+  created_at TIMESTAMP default current_timestamp NOT NULL
+);
+
+```
+This code below  was added because If this code runs twice, it'll create problems. This command basically drops the table if they already exist before creating them 
+
+```
+DROP TABLE IF EXISTS public.users;
+DROP TABLE IF EXISTS public.activities;
+
+```
+- Run the scripts with `./bin/db-schema-load`
+
+![db-schemaload](https://user-images.githubusercontent.com/113374279/226872037-1c91d160-67e8-4995-b021-f134364740e8.png)
 
 
 
