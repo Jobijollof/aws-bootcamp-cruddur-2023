@@ -173,7 +173,93 @@ gp env PROD_CONNECTION_URL="postgresql://crudderroot:<password>@<RDS-endpoint>:5
 
 Create a folder bin in backend-flask. Create three files `db-create`, `db-drop`, `db-schema-load`.
 
-`!# /usr/bin/bash` This called the 'she bang' It starts every bash script. 
+`!# /usr/bin/bash` This is called the 'she bang' It starts every bash script this is how the terminal recognises a bash script.
+
+Grant permission to the newly created files.  "chmod u+x bin/db-create", "chmod u+x bin/db-drop", "chmod u+x bin/db-schema-load" 
+
+![chmod](https://user-images.githubusercontent.com/113374279/226856615-ff3d4190-f267-40f4-b15e-b3febe0d69b6.png)
+
+- Add the following code into [db-create](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/backend-flask/bin/db-create)
+
+```
+
+#! /usr/bin/bash
+
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+LABEL="db-create"
+printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
+
+NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CONNECTION_URL")
+psql $NO_DB_CONNECTION_URL -c "create database cruddur;"
+
+```
+
+- Run the script with `./bin/db-create`
+
+- Add the following into [db-drop](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/backend-flask/bin/db-drop)
+
+```
+#! /usr/bin/bash
+
+echo db-drop
+
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+LABEL="db-drop"
+printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
+
+NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CONNECTION_URL")
+psql $NO_DB_CONNECTION_URL -c "drop database cruddur;"
+
+```
+- Run the script with `./bin/db-drop`
+
+- Add the following into [db-schema-load](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/backend-flask/bin/db-schema-load)
+
+```
+#! /usr/bin/bash
+
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+LABEL="db-schema-load"
+printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
+
+schema_path="$(realpath .)/db/schema.sql"
+echo $schema_path
+
+if [ "$1" = "prod" ]; then
+  echo "Running in production mode"
+  URL=$PROD_CONNECTION_URL
+else
+  URL=$CONNECTION_URL
+fi
+
+psql $URL cruddur < $schema_path
+
+```
+
+- Run the script with `./bin/db-schema-load`
+
+
+- Add the following code into [db-connect](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/backend-flask/bin/db-connect)
+
+```
+
+#! /usr/bin/bash
+
+
+if [ "$1" = "prod" ]; then
+  echo "Running in production mode"
+  URL=$PROD_CONNECTION_URL
+else
+  URL=$CONNECTION_URL
+fi
+
+psql $URL
+
+```
+
 
 
 
