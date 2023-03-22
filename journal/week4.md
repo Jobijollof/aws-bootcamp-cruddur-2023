@@ -309,9 +309,21 @@ DROP TABLE IF EXISTS public.users;
 DROP TABLE IF EXISTS public.activities;
 
 ```
-- Run the scripts with `./bin/db-schema-load`
+- Run the scripts with `./bin/db-schema-load-prod`
 
 ![db-schemaload](https://user-images.githubusercontent.com/113374279/226872037-1c91d160-67e8-4995-b021-f134364740e8.png)
+
+- Create a new /bin/file named `db-connect` grant permission `chmod u+x .bin/db-connect`
+
+- Run the script with `./bin/db-connect`
+
+This connects you automatically to the database.
+
+To check if tables were created run the `\dt` command to confirm the existence of my table
+
+
+
+
 
 
 
