@@ -161,7 +161,8 @@ gp env CONNECTION_URL="postgresql://postgres:password@localhost:5432/cruddur"
 
 ```
 
-PROD_CONNECTION_URL="postgresql://crudderroot:generalt666.@<RDS endpoint>:5432/cruddur"
+export PROD_CONNECTION_URL="postgresql://crudderroot:<password>@<RDS-endpoint>:5432/cruddur"
+gp env PROD_CONNECTION_URL="postgresql://crudderroot:<password>@<RDS-endpoint>:5432/cruddur"
 
 ```
 
