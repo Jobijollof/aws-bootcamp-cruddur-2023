@@ -171,6 +171,12 @@ gp env PROD_CONNECTION_URL="postgresql://crudderroot:<password>@<RDS-endpoint>:5
 
 ### Automating DB processes using Bash Scripting
 
+Create a folder bin in backend-flask. Create three files `db-create`, `db-drop`, `db-schema-load`.
+
+`!# /usr/bin/bash` This called the 'she bang' It starts every bash script. 
+
+
+
 
 
 
