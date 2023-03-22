@@ -171,7 +171,7 @@ gp env PROD_CONNECTION_URL="postgresql://crudderroot:<password>@<RDS-endpoint>:5
 
 ### Automating DB processes using Bash Scripting
 
-Create a folder bin in backend-flask. Create three files `db-create`, `db-drop`, `db-schema-load`.
+Create a folder bin in backend-flask. Create three files  in these three files in the bin folder `db-create`, `db-drop`, `db-schema-load`.
 
 `!# /usr/bin/bash` This is called the 'she bang' It starts every bash script this is how the terminal recognises a bash script.
 
@@ -240,6 +240,8 @@ psql $URL cruddur < $schema_path
 ```
 
 - Run the script with `./bin/db-schema-load`
+
+- [Colour Coding  Commands](https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux)
 
 
 - Add the following code into [db-connect](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/backend-flask/bin/db-connect)
