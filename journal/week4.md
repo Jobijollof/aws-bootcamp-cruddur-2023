@@ -129,25 +129,46 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 ![external- script](https://user-images.githubusercontent.com/113374279/226736022-84c95249-0a4c-4ab0-8c9b-23dac3e13a3c.png)
 
-- Connection string to Posgres
+- Connection String to Postgres
+
 
 ```
 psql postgresql://postgres:password@localhost:5432/cruddur
+
 ```
 
-- Save connection strin as an enviroment variable
+![connection-string](https://user-images.githubusercontent.com/113374279/226770026-82d8884c-f33a-463b-855c-7caf47d15794.png)
+
+
+- Save Connection URL string as an enviroment variable
+
 
 ```
 
 export CONNECTION_URL="postgresql://postgres:password@localhost:5432/cruddur"
 
+psql $CONNECTION_URL
+
+gp env CONNECTION_URL="postgresql://postgres:password@localhost:5432/cruddur"
 
 ```
 
+![connection-url](https://user-images.githubusercontent.com/113374279/226769963-7d8f7fc5-96de-4c9f-9158-2b442fe7631f.png)
 
 
+- Save production URL string as an environment Variable
 
 
+```
+
+PROD_CONNECTION_URL="postgresql://crudderroot:generalt666.@<RDS endpoint>:5432/cruddur"
+
+```
+
+- RDS endpoint is on the created database in AWS
+
+
+### Automating DB processes using Bash Scripting
 
 
 
