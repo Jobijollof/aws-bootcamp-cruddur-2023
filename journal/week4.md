@@ -558,7 +558,7 @@ class HomeActivities:
 
   ```  
 
-
+- `docker-compose up` This is because we just installed some libraries
 
 
 
