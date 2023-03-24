@@ -331,6 +331,12 @@ To check if tables were created run the `\dt` command to confirm the existence o
 ![the-end](https://user-images.githubusercontent.com/113374279/226884931-db5eb3c9-c49a-4538-9795-b971262e30fe.png)
 
 
+SELECT * FROM activities;
+
+The data the comes up is quite unreadable.
+
+click on `q` to exit. Then use the `\x on` command. Then type in `SELECT * FROM activities;` again the output is a better data format and structure.
+
 
 
 
