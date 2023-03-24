@@ -337,6 +337,63 @@ The data the comes up is quite unreadable.
 
 click on `q` to exit. Then use the `\x on` command. Then type in `SELECT * FROM activities;` again the output is a better data format and structure.
 
+Drop database
+
+`./bin/db-drop`
+
+In Backend-flask/bin create a file named `db-sessions`. Add the following into the file
+
+```
+#! /usr/bin/bash
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+LABEL="db-sessions"
+printf "${CYAN}== ${LABEL}${NO_COLOR}\n"
+
+if [ "$1" = "prod" ]; then
+  echo "Running in production mode"
+  URL=$PROD_CONNECTION_URL
+else
+  URL=$CONNECTION_URL
+fi
+
+NO_DB_URL=$(sed 's/\/cruddur//g' <<<"$URL")
+psql $NO_DB_URL -c "select pid as process_id, \
+       usename as user,  \
+       datname as db, \
+       client_addr, \
+       application_name as app,\
+       state \
+from pg_stat_activity;"
+
+```
+- Grant the file executable permission by doing `chmod u+x bin/db-drop`
+
+- Run `./bin/db-sessions`
+
+-  In backend-flask/bin create another file called `db-setup` and drop the following code in it
+
+```
+#! /usr/bin/bash
+-e # stop if it fails at any point
+
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+LABEL="db-setup"
+printf "${CYAN}==== ${LABEL}${NO_COLOR}\n"
+
+bin_path="$(realpath .)/bin"
+
+source "$bin_path/db-drop"
+source "$bin_path/db-create"
+source "$bin_path/db-schema-load"
+source "$bin_path/db-seed"
+
+```
+
+- Grant the file permissions `chmod u+x bin/db-setup`
+
+
 
 
 
