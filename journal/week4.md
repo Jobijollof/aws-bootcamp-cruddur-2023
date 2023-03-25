@@ -321,7 +321,8 @@ This connects you automatically to the database.
 
 To check if tables were created run the `\dt` command to confirm the existence of my table
 
-![list-database](https://user-images.githubusercontent.com/113374279/226882539-1b81d2ce-9b6c-4f45-a11a-45e4bf176df7.png)
+![pub-active](https://user-images.githubusercontent.com/113374279/227705142-453dbc75-92ab-48ab-bf03-d2a713866d4d.png)
+
 
 
 - Create a file `bin/db-seed` [db-seed](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/backend-flask/bin/db-seed)
@@ -333,15 +334,25 @@ To check if tables were created run the `\dt` command to confirm the existence o
 
 SELECT * FROM activities;
 
-The data the comes up is quite unreadable.
+The data the comes up is quite unorganised.
+
+![seed-data](https://user-images.githubusercontent.com/113374279/227705784-7bde4c10-d6e4-4819-8bfa-a6c87fae4398.png)
+
+
 
 click on `q` to exit. Then use the `\x on` command. Then type in `SELECT * FROM activities;` again the output is a better data format and structure.
+
+![x-on](https://user-images.githubusercontent.com/113374279/227705751-b6f22215-1a80-463a-9300-029349a05ef8.png)
+
 
 Drop database
 
 `./bin/db-drop`
 
-In Backend-flask/bin create a file named `db-sessions`. Add the following into the file
+![drop-database](https://user-images.githubusercontent.com/113374279/227705660-6e964a12-7129-432b-abdb-51252f95cf08.png)
+
+
+In Backend-flask/bin create a file named [db-sessions](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/backend-flask/bin/db-sessions) Add the following into the file
 
 ```
 #! /usr/bin/bash
@@ -371,7 +382,7 @@ from pg_stat_activity;"
 
 - Run `./bin/db-sessions`
 
--  In backend-flask/bin create another file called `db-setup` and drop the following code in it
+-  In backend-flask/bin create another file called `db-setup` and drop the following code in it. This helps to set up the work space immediately.
 
 ```
 #! /usr/bin/bash
@@ -408,155 +419,87 @@ pip install -r requirements.txt
 
 ```
 
-- In backend-flask/lib make a new file called `db.py`
+- In backend-flask/lib make a new file called [db.py](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/backend-flask/lib/db.py)
 
 ```
-rom psycopg_pool import ConnectionPool
+from psycopg_pool import ConnectionPool
 import os
-import re
-import sys
-from flask import current_app as app
 
-class Db:
-  def __init__(self):
-    self.init_pool()
+def query_wrap_object(template):
+  sql = f"""
+  (SELECT COALESCE(row_to_json(object_row),'{{}}'::json) FROM (
+  {template}
+  ) object_row);
+  """
+  return sql
 
-  def template(self,*args):
-    pathing = list((app.root_path,'db','sql',) + args)
-    pathing[-1] = pathing[-1] + ".sql"
+def query_wrap_array(template):
+  sql = f"""
+  (SELECT COALESCE(array_to_json(array_agg(row_to_json(array_row))),'[]'::json) FROM (
+  {template}
+  ) array_row);
+  """
+  return sql
 
-    template_path = os.path.join(*pathing)
-
-    green = '\033[92m'
-    no_color = '\033[0m'
-    print("\n")
-    print(f'{green} Load SQL Template: {template_path} {no_color}')
-
-    with open(template_path, 'r') as f:
-      template_content = f.read()
-    return template_content
-
-  def init_pool(self):
-    connection_url = os.getenv("CONNECTION_URL")
-    self.pool = ConnectionPool(connection_url)
-  # we want to commit data such as an insert
-  # be sure to check for RETURNING in all uppercases
-  def print_params(self,params):
-    blue = '\033[94m'
-    no_color = '\033[0m'
-    print(f'{blue} SQL Params:{no_color}')
-    for key, value in params.items():
-      print(key, ":", value)
-
-  def print_sql(self,title,sql):
-    cyan = '\033[96m'
-    no_color = '\033[0m'
-    print(f'{cyan} SQL STATEMENT-[{title}]------{no_color}')
-    print(sql)
-  def query_commit(self,sql,params={}):
-    self.print_sql('commit with returning',sql)
-
-    pattern = r"\bRETURNING\b"
-    is_returning_id = re.search(pattern, sql)
-
-    try:
-      with self.pool.connection() as conn:
-        cur =  conn.cursor()
-        cur.execute(sql,params)
-        if is_returning_id:
-          returning_id = cur.fetchone()[0]
-        conn.commit() 
-        if is_returning_id:
-          return returning_id
-    except Exception as err:
-      self.print_sql_err(err)
-  # when we want to return a json object
-  def query_array_json(self,sql,params={}):
-    self.print_sql('array',sql)
-
-    wrapped_sql = self.query_wrap_array(sql)
-    with self.pool.connection() as conn:
-      with conn.cursor() as cur:
-        cur.execute(wrapped_sql,params)
-        json = cur.fetchone()
-        return json[0]
-  # When we want to return an array of json objects
-  def query_object_json(self,sql,params={}):
-
-    self.print_sql('json',sql)
-    self.print_params(params)
-    wrapped_sql = self.query_wrap_object(sql)
-
-    with self.pool.connection() as conn:
-      with conn.cursor() as cur:
-        cur.execute(wrapped_sql,params)
-        json = cur.fetchone()
-        if json == None:
-          "{}"
-        else:
-          return json[0]
-  def query_wrap_object(self,template):
-    sql = f"""
-    (SELECT COALESCE(row_to_json(object_row),'{{}}'::json) FROM (
-    {template}
-    ) object_row);
-    """
-    return sql
-  def query_wrap_array(self,template):
-    sql = f"""
-    (SELECT COALESCE(array_to_json(array_agg(row_to_json(array_row))),'[]'::json) FROM (
-    {template}
-    ) array_row);
-    """
-    return sql
-  def print_sql_err(self,err):
-    # get details about the exception
-    err_type, err_obj, traceback = sys.exc_info()
-
-    # get the line number when exception occured
-    line_num = traceback.tb_lineno
-
-    # print the connect() error
-    print ("\npsycopg ERROR:", err, "on line number:", line_num)
-    print ("psycopg traceback:", traceback, "-- type:", err_type)
-
-    # print the pgcode and pgerror exceptions
-    print ("pgerror:", err.pgerror)
-    print ("pgcode:", err.pgcode, "\n")
-
-db = Db()
+connection_url = os.getenv("CONNECTION_URL")
+pool = ConnectionPool(connection_url)
 
 ```
-Go to `docker-compose.yml` add the following
+- Add this to [docker-compose.yml](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/docker-compose.yml)
 
 ```
-CONNECTION_URL: "${PROD_CONNECTION_URL}"
-#CONNECTION_URL: "postgresql://postgres:password@db:5432/cruddur"
+CONNECTION_URL: "postgresql://postgres:password@db:5432/cruddur"
 
 ```
 
-- Add the following to `home_activities.py`
+- Add the following to [home_activities.py](https://github.com/Jobijollof/aws-bootcamp-cruddur-2023/blob/main/backend-flask/services/home_activities.py)
 
 ```
 from datetime import datetime, timedelta, timezone
 from opentelemetry import trace
 
-from lib.db import db
+# import connection pool
+from lib.db import pool, query_wrap_object, query_wrap_array 
 
-#tracer = trace.get_tracer("home.activities")
+# import logging  
+
+tracer = trace.get_tracer("home.activities")
 
 class HomeActivities:
   def run(cognito_user_id=None):
-    #logger.info("HomeActivities")
-    #with tracer.start_as_current_span("home-activites-mock-data"):
-    #  span = trace.get_current_span()
-    #  now = datetime.now(timezone.utc).astimezone()
-    #  span.set_attribute("app.now", now.isoformat())
-    sql = db.template('activities','home')
-    results = db.query_array_json(sql)
-    return results
-
-  ```  
+    # logger.info("HomeActivities")
+    with tracer.start_as_current_span("home-activities-mock-data"):
+      span = trace.get_current_span()
+      now = datetime.now(timezone.utc).astimezone()
+      span.set_attribute("app.now", now.isoformat())    
+      
+    # Connection pool for psycopg 
+      sql = query_wrap_array("""
+      SELECT
+        activities.uuid,
+        users.display_name,
+        users.handle,
+        activities.message,
+        activities.replies_count,
+        activities.reposts_count,
+        activities.likes_count,
+        activities.reply_to_activity_uuid,
+        activities.expires_at,
+        activities.created_at
+      FROM public.activities
+      LEFT JOIN public.users ON users.uuid = activities.user_uuid
+      ORDER BY activities.created_at DESC
+      """)  
+      print(sql)
+      with pool.connection() as conn:
+        with conn.cursor() as cur:
+          cur.execute(sql)
+          # this will return a tuple
+          # the first field being the data
+          json = cur.fetchone()
+      return json[0]
+    
+ ```  
 
 - `docker-compose up` This is because we just installed some libraries
 
