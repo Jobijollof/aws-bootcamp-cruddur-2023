@@ -3,6 +3,20 @@
 
 # Week 4 — Postgres and RDS
 
+Instructor: Andrew Brown
+
+Instructional Videos:
+
+[Live stream](https://www.youtube.com/live/EtD7Kv5YCUs?feature=share)
+
+[SQL-RDS](https://youtu.be/Sa2iB33sKFo)
+
+[Cognito Post Confirmation Lambda](https://youtu.be/7qP4RcY2MwU)
+
+
+
+
+
 ## Database
 
 A database is a collection of data that is organized in a structured manner to allow for efficient retrieval and manipulation of that data. Databases are used in a wide variety of applications, including business, scientific research, and social media.
@@ -505,6 +519,16 @@ class HomeActivities:
  ```  
 
 - `docker-compose up` This is because we just installed some libraries
+
+- Hit the frontend on port 3000
+
+![imported-seed](https://user-images.githubusercontent.com/113374279/227706507-e70bc2fe-63a4-4a4e-b20b-d6dfefead813.png)
+
+- Log-in to the app go to the backend logs to check for any errors. I had none.
+
+![authenticated](https://user-images.githubusercontent.com/113374279/227706557-c36b2093-5042-4ff9-9a13-e3eb64f6fbba.png)
+
+
 
 
 
