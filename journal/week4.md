@@ -382,6 +382,9 @@ from pg_stat_activity;"
 
 - Run `./bin/db-sessions`
 
+![db-sessions](https://user-images.githubusercontent.com/113374279/227705849-7232b694-652d-4cc0-944b-f53b50f22274.png)
+
+
 -  In backend-flask/bin create another file called `db-setup` and drop the following code in it. This helps to set up the work space immediately.
 
 ```
