@@ -535,8 +535,78 @@ psql $PROD_CONNECTION_URL
 ```
 This connection will not work.................. In order to make it work, go to RDS, click on Databases,click on the database cruddur, click on secrurity groups and edit inbound rules.
 
-`curl ifconfig.me` to get Ip adress.
+- To get Ip adress.
 
+- To make it persistent
+
+- To confirm
+
+```
+curl ifconfig.me
+
+GITPOD_IP=$(curl ifconfig.me)
+
+echo $GITPOD_IP
+
+```
+
+```
+psql $PROD_CONNECTION_URL
+
+```
+Exit the data base
+
+```
+export DB_SG_ID="sg-0693a455d538197b7"
+gp env DB_SG_ID="sg-0693a455d538197b7"
+export DB_SG_RULE_ID="sgr-073342ba3ebc920e7"
+gp env DB_SG_RULE_ID="sgr-073342ba3ebc920e7"
+
+```
+
+```
+aws ec2 modify-security-group-rules \
+    --group-id $DB_SG_ID \
+    --security-group-rules "SecurityGroupRuleId=$DB_SG_RULE_ID,SecurityGroupRule={Description=GITPOD,IpProtocol=tcp,FromPort=5432,ToPort=5432,CidrIpv4=$GITPOD_IP/32}"
+```
+
+- Create a file in backend/lib and call it `rds-update-sg-rule`
+
+- Add the following into the file
+
+```
+#! /usr/bin/bash
+
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+LABEL="rds-update-sg-rule"
+printf "${CYAN}==== ${LABEL}${NO_COLOR}\n"
+
+aws ec2 modify-security-group-rules \
+    --group-id $DB_SG_ID \
+    --security-group-rules "SecurityGroupRuleId=$DB_SG_RULE_ID,SecurityGroupRule={Description=GITPOD,IpProtocol=tcp,FromPort=5432,ToPort=5432,CidrIpv4=$GITPOD_IP/32}"
+
+```
+
+- Grant the file permission
+
+`chmod u+x bin/rds-update-sg-rule`
+
+```
+export GITPOD_IP=$(curl ifconfig.me)
+
+```
+
+- Run  the script `./bin/rds-update-sg-rule`
+
+- Update `gitpod.yml` so the script runs everytime add this
+
+```
+    command: |
+      export GITPOD_IP=$(curl ifconfig.me)
+      source "$THEIA_WORKSPACE_ROOT/backend-flask/db-update-sg-rule"
+
+```
 
 
 
