@@ -528,6 +528,16 @@ class HomeActivities:
 
 ![authenticated](https://user-images.githubusercontent.com/113374279/227706557-c36b2093-5042-4ff9-9a13-e3eb64f6fbba.png)
 
+- Check to see connection to production URL
+
+```
+psql $PROD_CONNECTION_URL
+```
+This connection will not work.................. In order to make it work, go to RDS, click on Databases,click on the database cruddur, click on secrurity groups and edit inbound rules.
+
+`curl ifconfig.me` to get Ip adress.
+
+
 
 
 
