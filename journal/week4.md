@@ -604,8 +604,7 @@ export GITPOD_IP=$(curl ifconfig.me)
 ```
     command: |
       export GITPOD_IP=$(curl ifconfig.me)
-      source "$THEIA_WORKSPACE_ROOT/backend-flask/db-update-sg-rule"
-
+      source  "$THEIA_WORKSPACE_ROOT/backend-flask/bin/rds-update-sg-rule" 
 ```
 
 
