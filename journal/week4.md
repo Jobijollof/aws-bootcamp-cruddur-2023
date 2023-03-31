@@ -633,6 +633,13 @@ export GITPOD_IP=$(curl ifconfig.me)
 ![run-rdsscript](https://user-images.githubusercontent.com/113374279/229090016-ffcb04c9-d8d0-4f95-b9f3-56f93087c9ac.png)
 
 
+- Update the `docker-compose.yml` file
+
+
+![docker-compose](https://user-images.githubusercontent.com/113374279/229095154-20eef5ee-9a94-42e2-8c3a-2ab910d24d6b.png)
+
+
+
 - Update `gitpod.yml` so the script runs everytime add this
 
 ```
