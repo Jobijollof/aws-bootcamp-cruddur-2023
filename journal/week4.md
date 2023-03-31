@@ -578,9 +578,10 @@ The other two commands are ( GITPOD_IP=$(curl ifconfig.me) and echo $GITPOD_IP) 
 
 - We have a slight inconvinience. Everytime the environment is spinned up, the GITPOD ip has to be updated in the security group inbound rule. To fix this, write a script  that automatically updates the Ip address whenever a new worksapce is opened. 
 
-### Automating GITPOD_IP RDS SG Update
+### Connect to RDS via Gitpod/Automating the Process.
 
-Copy from the  management console  the db instances  security group ID and the security group rule ID,  input  them in the manner  below and run it on the terminal.
+
+Copy from the management console the db instances security group ID and the security group rule ID, input  them in the manner below and run it on the terminal.
 
 
 ```
