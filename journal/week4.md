@@ -662,7 +662,7 @@ export GITPOD_IP=$(curl ifconfig.me)
 
 ![no data](https://user-images.githubusercontent.com/113374279/229103796-83a57bc3-ac2a-461f-85a4-6aaa34f01f5e.png)
 
-- Check logs ![error](https://user-images.githubusercontent.com/113374279/229107198-f1ac3439-ab32-4254-96cd-cc0256f94566.png) This is the expected error message.
+- Check  the backend logs ![error](https://user-images.githubusercontent.com/113374279/229107198-f1ac3439-ab32-4254-96cd-cc0256f94566.png) This is the expected error message.
 
 
 
