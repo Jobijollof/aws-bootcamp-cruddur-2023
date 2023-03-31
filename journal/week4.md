@@ -656,9 +656,17 @@ export GITPOD_IP=$(curl ifconfig.me)
 
 ![sgd-true](https://user-images.githubusercontent.com/113374279/229090354-38295a71-57b1-44b1-b018-f4438af13a04.png)
 
+- Run `./bin/db-schema-load prod`
+
 - Go to the frontend URL (we are not expected to get any data at this point)
 
 ![no data](https://user-images.githubusercontent.com/113374279/229103796-83a57bc3-ac2a-461f-85a4-6aaa34f01f5e.png)
+
+- Check logs ![error](https://user-images.githubusercontent.com/113374279/229107198-f1ac3439-ab32-4254-96cd-cc0256f94566.png) This is the expected error message.
+
+
+
+
 
 
 
