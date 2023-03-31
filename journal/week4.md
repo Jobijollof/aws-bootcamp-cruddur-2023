@@ -651,10 +651,19 @@ export GITPOD_IP=$(curl ifconfig.me)
 
 ![gitpodyml](https://user-images.githubusercontent.com/113374279/229093872-725afe45-241c-47c5-b9bb-b5e7f6c659aa.png)
 
-- To make sure that it works,  removed the name of the  inbound rule in the security group and start the workspace . 
+- To make sure that it works, remove the name of the inbound rule in the security group and start the workspace. 
 
 
 ![sgd-true](https://user-images.githubusercontent.com/113374279/229090354-38295a71-57b1-44b1-b018-f4438af13a04.png)
+
+- Go to the frontend URL (we are not expected to get any data at this point)
+
+![no data](https://user-images.githubusercontent.com/113374279/229103796-83a57bc3-ac2a-461f-85a4-6aaa34f01f5e.png)
+
+
+
+
+
 
 
 
