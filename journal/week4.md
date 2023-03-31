@@ -1,3 +1,4 @@
+![authenticated](https://user-images.githubusercontent.com/113374279/229070312-2293c135-7ef8-4356-948f-b03d714c7033.png)
 
 ![bootcamp-logo](https://user-images.githubusercontent.com/113374279/226582654-70a97688-d573-4fbe-8786-7ca7ae766207.png)
 
@@ -526,14 +527,22 @@ class HomeActivities:
 
 - Log-in to the app go to the backend logs to check for any errors. I had none.
 
-![authenticated](https://user-images.githubusercontent.com/113374279/227706557-c36b2093-5042-4ff9-9a13-e3eb64f6fbba.png)
+![authenticates1](https://user-images.githubusercontent.com/113374279/229071731-a6766aef-28b0-4629-8533-9a26f3ad1f73.png)
 
-- Check to see connection to production URL
 
+- Go back to AWS RDS restart the RDS and make a connection to the database. On the terminal went to my terminal to run echo PROD_CONNECTION_URL to make sure the prod url is set.  
+
+![echo](https://user-images.githubusercontent.com/113374279/229078307-2273e23b-4f34-4240-9e36-9eebe304efe1.png)
+
+- Run
 ```
 psql $PROD_CONNECTION_URL
 ```
-This connection will not work.................. In order to make it work, go to RDS, click on Databases,click on the database cruddur, click on secrurity groups and edit inbound rules.
+
+![hanging](https://user-images.githubusercontent.com/113374279/229079905-a818d07d-3c6b-43c6-af6c-ae637803ee13.png)
+
+This connection will not work  because the gitpod address, has to be made  available to the security group. Go to RDS, click on Databases,click on the database cruddur, click on secrurity groups and edit inbound rules.
+
 
 - To get Ip adress.
 
