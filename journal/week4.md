@@ -1,4 +1,4 @@
-![authenticated](https://user-images.githubusercontent.com/113374279/229070312-2293c135-7ef8-4356-948f-b03d714c7033.png)
+
 
 ![bootcamp-logo](https://user-images.githubusercontent.com/113374279/226582654-70a97688-d573-4fbe-8786-7ca7ae766207.png)
 
@@ -543,12 +543,20 @@ psql $PROD_CONNECTION_URL
 
 This connection will not work  because the gitpod address, has to be made  available to the security group. Go to RDS, click on Databases,click on the database cruddur, click on secrurity groups and edit inbound rules.
 
+![click-cruddur](https://user-images.githubusercontent.com/113374279/229080948-ca73ed57-0ddf-4a33-9399-55486a9ab777.png)
 
-- To get Ip adress.
 
-- To make it persistent
+![click-securityg](https://user-images.githubusercontent.com/113374279/229081053-3b489b5f-08b2-4022-8673-5e63d888c000.png)
 
-- To confirm
+
+![click-edit](https://user-images.githubusercontent.com/113374279/229082639-f0d24493-0398-4100-8af0-6660d65c4c95.png)
+
+
+
+![edit-inbound](https://user-images.githubusercontent.com/113374279/229083209-5a704b01-ff7e-439e-80cc-3a23a1dc862d.png)
+
+
+- To get  the Ip address that was used to edit the inbound rules, on the teminal run .
 
 ```
 curl ifconfig.me
@@ -558,12 +566,22 @@ GITPOD_IP=$(curl ifconfig.me)
 echo $GITPOD_IP
 
 ```
+The other two commands are ( GITPOD_IP=$(curl ifconfig.me) and echo $GITPOD_IP) are to make Ip address persistent, and  to confirm if it has been set. If you run, `psql $PROD_CONNECTION_URL` connection will be established.
 
-```
-psql $PROD_CONNECTION_URL
+![psql-prod](https://user-images.githubusercontent.com/113374279/229085732-8f902066-893d-426c-8505-5b7eb6735706.png)
 
-```
-Exit the data base
+`ls` to see databases.
+
+![cruddur root](https://user-images.githubusercontent.com/113374279/229086761-be360b89-90ed-49c5-ba9a-c87c4c205c39.png)
+
+- Exit the database,
+
+- We have a slight inconvinience. Everytime the environment is spinned up, the GITPOD ip has to be updated in the security group inbound rule. To fix this, write a script  that automatically updates the Ip address whenever a new worksapce is opened. 
+
+### Automating GITPOD_IP RDS SG Update
+
+Copy from the  management console  the db instances  security group ID and the security group rule ID,  input  them in the manner  below and run it on the terminal.
+
 
 ```
 export DB_SG_ID="sg-0693a455d538197b7"
@@ -577,9 +595,13 @@ gp env DB_SG_RULE_ID="sgr-073342ba3ebc920e7"
 aws ec2 modify-security-group-rules \
     --group-id $DB_SG_ID \
     --security-group-rules "SecurityGroupRuleId=$DB_SG_RULE_ID,SecurityGroupRule={Description=GITPOD,IpProtocol=tcp,FromPort=5432,ToPort=5432,CidrIpv4=$GITPOD_IP/32}"
+    
 ```
 
-- Create a file in backend/lib and call it `rds-update-sg-rule`
+![true](https://user-images.githubusercontent.com/113374279/229088154-e12ba527-98dc-4ab7-a06c-dee2edc9c487.png)
+
+
+- Create a file in backend/lib and call it `rds-update-sg-rule` 
 
 - Add the following into the file
 
@@ -608,13 +630,25 @@ export GITPOD_IP=$(curl ifconfig.me)
 
 - Run  the script `./bin/rds-update-sg-rule`
 
+![run-rdsscript](https://user-images.githubusercontent.com/113374279/229090016-ffcb04c9-d8d0-4f95-b9f3-56f93087c9ac.png)
+
+
 - Update `gitpod.yml` so the script runs everytime add this
 
 ```
     command: |
       export GITPOD_IP=$(curl ifconfig.me)
       source  "$THEIA_WORKSPACE_ROOT/backend-flask/bin/rds-update-sg-rule" 
+      
 ```
+
+![gitpodyml](https://user-images.githubusercontent.com/113374279/229093872-725afe45-241c-47c5-b9bb-b5e7f6c659aa.png)
+
+- To make sure that it works,  removed the name of the  inbound rule in the security group and start the workspace . 
+
+
+![sgd-true](https://user-images.githubusercontent.com/113374279/229090354-38295a71-57b1-44b1-b018-f4438af13a04.png)
+
 
 
 
