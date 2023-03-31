@@ -665,6 +665,16 @@ export GITPOD_IP=$(curl ifconfig.me)
 
 - Check  the backend logs ![error](https://user-images.githubusercontent.com/113374279/229107198-f1ac3439-ab32-4254-96cd-cc0256f94566.png) This is the expected error message.
 
+### Setup Cognito post confirmation lambda
+
+Create the handler function
+
+Create lambda in same vpc as rds instance Python 3.8
+Add a layer for psycopg2 with one of the below methods for development or production
+ENV variables needed for the lambda environment.
+
+
+
 
 
 
