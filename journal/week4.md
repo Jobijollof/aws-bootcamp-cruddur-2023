@@ -880,6 +880,7 @@ class HomeActivities:
 
 - Update `db.py` 
 
+```
 from psycopg_pool import ConnectionPool
 import os
 import re
@@ -999,6 +1000,100 @@ db = Db()
 
 - Create a folder in the db directory and call it sql. In sql, create a folder called activities with 3 sql files. Namely, `create.sql`, `home.sql`, and 
 `object.sql`.
+
+
+`Create.sql`
+
+```
+INSERT INTO public.activities (
+  user_uuid,
+  message,
+  expires_at
+)
+VALUES (
+  (SELECT uuid 
+    FROM public.users 
+    WHERE users.handle = %(handle)s
+    LIMIT 1
+  ),
+  %(message)s,
+  %(expires_at)s
+) RETURNING uuid;
+
+```
+
+`home.sql`
+
+```
+SELECT
+  activities.uuid,
+  users.display_name,
+  users.handle,
+  activities.message,
+  activities.replies_count,
+  activities.reposts_count,
+  activities.likes_count,
+  activities.reply_to_activity_uuid,
+  activities.expires_at,
+  activities.created_at
+FROM public.activities
+LEFT JOIN public.users ON users.uuid = activities.user_uuid
+ORDER BY activities.created_at DESC 
+
+```
+
+`Object.sql`
+
+```
+SELECT
+  activities.uuid,
+  users.display_name,
+  users.handle,
+  activities.message,
+  activities.created_at,
+  activities.expires_at
+FROM public.activities
+INNER JOIN public.users ON users.uuid = activities.user_uuid 
+WHERE 
+  activities.uuid = %(uuid)s
+  
+```
+
+`HomeFeedPage.js`
+
+![hommefeed](https://user-images.githubusercontent.com/113374279/229959208-5cbfba17-1596-43cb-a7d2-85b4c19c5052.png)
+
+In the components/ActivityForm.js, update the fetch request body to include the user_handle
+
+![fetch](https://user-images.githubusercontent.com/113374279/229959529-7663e512-cc59-4fae-abd9-2b50a6153ecc.png)
+
+
+- In `app.py` under the /api/activities route, assign the user_handle variable.
+
+```
+user_handle = request.json["user_handle"]
+message = request.json['message']
+
+```
+
+![code](https://user-images.githubusercontent.com/113374279/229959904-beede3fe-3d8e-45f5-b7a8-13bd7e8b7416.png)
+
+
+![crud](https://user-images.githubusercontent.com/113374279/229960028-378f6fce-d861-41b7-bb6d-30940cf1ef8d.png)
+
+![crud2](https://user-images.githubusercontent.com/113374279/229960123-f85607c6-661e-449b-a7bc-9aa0bdf6abc7.png)
+
+`select * from activities`
+
+![crud3](https://user-images.githubusercontent.com/113374279/229960257-3f5d300b-f4ac-48a4-9ce7-1891734852ab.png)
+
+
+
+
+
+
+
+
 
 
  
