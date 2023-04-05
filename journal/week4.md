@@ -670,6 +670,358 @@ export GITPOD_IP=$(curl ifconfig.me)
 Create the handler function
 
 Create lambda in same vpc as rds instance Python 3.8
+
+![create-function1](https://user-images.githubusercontent.com/113374279/229950029-7964a25d-140d-46d4-ac03-ee026763bcf7.png)
+
+
+![create-function](https://user-images.githubusercontent.com/113374279/229949979-828a3722-3658-4b69-9cd4-e9a9d0d70800.png)
+
+
+![enable-vpc](https://user-images.githubusercontent.com/113374279/229950542-a678b8a5-7c3f-4460-9fef-09a5d7d65f66.png)
+
+
+![enable-vpc2](https://user-images.githubusercontent.com/113374279/229951035-15d8050c-c948-4922-ae72-1b217ebd7448.png)
+
+
+- In `aws/json` directory create a new directory called `lambdas`. In `lambdas` create a file called `cruddur-post-confirmation.py`. Add the following into the file.
+
+```
+import json
+import psycopg2
+import os
+
+def lambda_handler(event, context):
+    user = event['request']['userAttributes']
+    print('userAttributes')
+    print(user)
+
+    user_display_name  = user['name']
+    user_email         = user['email']
+    user_handle        = user['preferred_username']
+    user_cognito_id    = user['sub']
+    try:
+      print('entered-try')
+      sql = f"""
+         INSERT INTO public.users (
+          display_name, 
+          email,
+          handle, 
+          cognito_user_id
+          ) 
+        VALUES(%s,%s,%s,%s)
+      """
+      print('SQL Statement ----')
+      print(sql)
+      conn = psycopg2.connect(os.getenv('CONNECTION_URL'))
+      cur = conn.cursor()
+      params = [
+        user_display_name,
+        user_email,
+        user_handle,
+        user_cognito_id
+      ]
+      cur.execute(sql, params)
+      conn.commit() 
+
+    except (Exception, psycopg2.DatabaseError) as error:
+      print(error)
+    finally:
+      if conn is not None:
+          cur.close()
+          conn.close()
+          print('Database connection closed.')
+    return event
+ 
+ ```
+    
+ - Copy the same code and drop it at the Lambda function code source. Deploy the code to save it.
+ 
+ 
+![lambda-deploy](https://user-images.githubusercontent.com/113374279/229952137-0409dcb3-2693-4339-b615-2a16f5a9b5f7.png)
+
+- Set the environment variable
+
+![config-envar](https://user-images.githubusercontent.com/113374279/229953212-72fa67d0-f271-4643-8d2a-3fbc652ddf80.png)
+
+
+![edit-envar](https://user-images.githubusercontent.com/113374279/229952808-a72b5f14-9812-4c5c-b14e-4140d882d736.png)
+
+
+### Adding lambda layer
+
+![add-a-layer](https://user-images.githubusercontent.com/113374279/229953488-5062e668-d98e-4455-9bbe-e07afc535d3e.png)
+
+- Get arn from this github repo [psycopg2 lambda layer repo](https://github.com/jetbridge/psycopg2-lambda-layer) specific to the rgion being used. 
+
+![add-layer-arn](https://user-images.githubusercontent.com/113374279/229953540-4ee6ef3c-868c-4368-9dbc-4107e8541c37.png)
+
+### Adding triggers
+
+![lambda-trigger](https://user-images.githubusercontent.com/113374279/229954714-b422bc4a-d996-4a68-839e-a11f2bda5c2e.png)
+
+
+![lamda-function](https://user-images.githubusercontent.com/113374279/229954772-a8d0e424-5ebb-4848-8ba0-793cc57f91a2.png)
+
+- Go to the terminal run `./bin/db-schemaload prod`
+
+- Delete pre-existing user in the cognito user pool.  Test the trigger  by signing up.
+
+- Debugging: Signed up, no errors but i wasnt getting data. So i checked the logs and was getting this. There was this tiny issue with the code i deployed `*params` i took it out of the code and everything started to work nicely. 
+
+![params](https://user-images.githubusercontent.com/113374279/229955393-f7bc5c6c-2d53-4472-902d-36536b4da4ee.png)
+
+- Deleted the user. Closed my workspace, reopened it and ran `./bin/db-schemaload prod` again.
+- Signed up the user data finally showed.
+
+`./bin/db-connect prod` to connect to the database
+
+![user-data](https://user-images.githubusercontent.com/113374279/229956056-7e5c4e72-e4f5-40a1-be7b-bf8dd0cacebb.png)
+
+
+![jollof-user](https://user-images.githubusercontent.com/113374279/229956084-458f4893-ecbc-4dcb-a3a6-4268d6ed54b5.png)
+
+### Creating Activities
+
+- Update `create_activity.py` 
+
+```
+from datetime import datetime, timedelta, timezone
+
+from lib.db import db
+
+class CreateActivity:
+  def run(message, user_handle, ttl):
+    model = {
+      'errors': None,
+      'data': None
+    }
+
+    now = datetime.now(timezone.utc).astimezone()
+
+    if (ttl == '30-days'):
+      ttl_offset = timedelta(days=30) 
+    elif (ttl == '7-days'):
+      ttl_offset = timedelta(days=7) 
+    elif (ttl == '3-days'):
+      ttl_offset = timedelta(days=3) 
+    elif (ttl == '1-day'):
+      ttl_offset = timedelta(days=1) 
+    elif (ttl == '12-hours'):
+      ttl_offset = timedelta(hours=12) 
+    elif (ttl == '3-hours'):
+      ttl_offset = timedelta(hours=3) 
+    elif (ttl == '1-hour'):
+      ttl_offset = timedelta(hours=1) 
+    else:
+      model['errors'] = ['ttl_blank']
+
+    if user_handle == None or len(user_handle) < 1:
+      model['errors'] = ['user_handle_blank']
+
+    if message == None or len(message) < 1:
+      model['errors'] = ['message_blank'] 
+    elif len(message) > 280:
+      model['errors'] = ['message_exceed_max_chars'] 
+
+    if model['errors']:
+      model['data'] = {
+        'handle':  user_handle,
+        'message': message
+      }   
+    else:
+      expires_at = (now + ttl_offset)
+      uuid = CreateActivity.create_activity(user_handle,message,expires_at)
+
+      object_json = CreateActivity.query_object_activity(uuid)
+      model['data'] = object_json
+    return model
+
+  def create_activity(handle, message, expires_at):
+    sql = db.template('activities','create')
+    uuid = db.query_commit(sql,{
+      'handle': handle,
+      'message': message,
+      'expires_at': expires_at
+    })
+    return uuid
+  def query_object_activity(uuid):
+    sql = db.template('activities','object')
+    return db.query_object_json(sql,{
+      'uuid': uuid
+    })
+    
+ 
+ ```
+ 
+- Update `home_activities.py`
+
+
+```
+from datetime import datetime, timedelta, timezone
+from opentelemetry import trace
+
+from lib.db import db
+
+#tracer = trace.get_tracer("home.activities")
+
+class HomeActivities:
+  def run(cognito_user_id=None):
+    #logger.info("HomeActivities")
+    #with tracer.start_as_current_span("home-activites-mock-data"):
+    #  span = trace.get_current_span()
+    #  now = datetime.now(timezone.utc).astimezone()
+    #  span.set_attribute("app.now", now.isoformat())
+    sql = db.template('activities','home')
+    results = db.query_array_json(sql)
+    return results    
+ 
+ 
+```
+
+- Update `db.py` 
+
+from psycopg_pool import ConnectionPool
+import os
+import re
+import sys
+from flask import current_app as app
+
+class Db:
+  def __init__(self):
+    self.init_pool()
+
+  def template(self,*args):
+    pathing = list((app.root_path,'db','sql',) + args)
+    pathing[-1] = pathing[-1] + ".sql"
+
+    template_path = os.path.join(*pathing)
+
+    green = '\033[92m'
+    no_color = '\033[0m'
+    print("\n")
+    print(f'{green} Load SQL Template: {template_path} {no_color}')
+
+    with open(template_path, 'r') as f:
+      template_content = f.read()
+    return template_content
+
+  def init_pool(self):
+    connection_url = os.getenv("CONNECTION_URL")
+    self.pool = ConnectionPool(connection_url)
+  # we want to commit data such as an insert
+  # be sure to check for RETURNING in all uppercases
+  def print_params(self,params):
+    blue = '\033[94m'
+    no_color = '\033[0m'
+    print(f'{blue} SQL Params:{no_color}')
+    for key, value in params.items():
+      print(key, ":", value)
+
+  def print_sql(self,title,sql):
+    cyan = '\033[96m'
+    no_color = '\033[0m'
+    print(f'{cyan} SQL STATEMENT-[{title}]------{no_color}')
+    print(sql)
+  def query_commit(self,sql,params={}):
+    self.print_sql('commit with returning',sql)
+
+    pattern = r"\bRETURNING\b"
+    is_returning_id = re.search(pattern, sql)
+
+    try:
+      with self.pool.connection() as conn:
+        cur =  conn.cursor()
+        cur.execute(sql,params)
+        if is_returning_id:
+          returning_id = cur.fetchone()[0]
+        conn.commit() 
+        if is_returning_id:
+          return returning_id
+    except Exception as err:
+      self.print_sql_err(err)
+  # when we want to return a json object
+  def query_array_json(self,sql,params={}):
+    self.print_sql('array',sql)
+
+    wrapped_sql = self.query_wrap_array(sql)
+    with self.pool.connection() as conn:
+      with conn.cursor() as cur:
+        cur.execute(wrapped_sql,params)
+        json = cur.fetchone()
+        return json[0]
+  # When we want to return an array of json objects
+  def query_object_json(self,sql,params={}):
+
+    self.print_sql('json',sql)
+    self.print_params(params)
+    wrapped_sql = self.query_wrap_object(sql)
+
+    with self.pool.connection() as conn:
+      with conn.cursor() as cur:
+        cur.execute(wrapped_sql,params)
+        json = cur.fetchone()
+        if json == None:
+          "{}"
+        else:
+          return json[0]
+  def query_wrap_object(self,template):
+    sql = f"""
+    (SELECT COALESCE(row_to_json(object_row),'{{}}'::json) FROM (
+    {template}
+    ) object_row);
+    """
+    return sql
+  def query_wrap_array(self,template):
+    sql = f"""
+    (SELECT COALESCE(array_to_json(array_agg(row_to_json(array_row))),'[]'::json) FROM (
+    {template}
+    ) array_row);
+    """
+    return sql
+  def print_sql_err(self,err):
+    # get details about the exception
+    err_type, err_obj, traceback = sys.exc_info()
+
+    # get the line number when exception occured
+    line_num = traceback.tb_lineno
+
+    # print the connect() error
+    print ("\npsycopg ERROR:", err, "on line number:", line_num)
+    print ("psycopg traceback:", traceback, "-- type:", err_type)
+
+    # print the pgcode and pgerror exceptions
+    print ("pgerror:", err.pgerror)
+    print ("pgcode:", err.pgcode, "\n")
+
+db = Db()
+
+```
+
+- Create a folder in the db directory and call it sql. In sql, create a folder called activities with 3 sql files. Namely, `create.sql`, `home.sql`, and 
+`object.sql`.
+
+
+ 
+
+
+
+
+
+
+
+In Amazon cognito, add triggers.  Create and Set a trigger for post sign-up.
+
+
+
+
+
+
+
+
+
+
+
+
 Add a layer for psycopg2 with one of the below methods for development or production
 ENV variables needed for the lambda environment.
 
