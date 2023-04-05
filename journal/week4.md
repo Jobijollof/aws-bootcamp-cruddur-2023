@@ -1104,7 +1104,7 @@ message = request.json['message']
 
 
 
-In Amazon cognito, add triggers.  Create and Set a trigger for post sign-up.
+
 
 
 
