@@ -1117,14 +1117,6 @@ message = request.json['message']
 
 
 
-Add a layer for psycopg2 with one of the below methods for development or production
-ENV variables needed for the lambda environment.
-
-
-
-
-
-
 
 
 
